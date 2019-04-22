@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://www.vins.site">
-  <title>Hive 一次数据清洗的记录 | Vincent&#39;s blog</title>
+  <title>UbuntuOnWin10 安装Mysql | Vincent&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="HIVE数据清洗需求通过自定义简单的数据清洗场景，来练习hive的几个常用内置函数。例如字符串拼接，条件选择，字符串正则替换，数据筛选等。通过脚本生成测试数据集，然后根据需求清洗数据。 测试数据集的准备使用脚本生成数据集12345678910111213rm -rf ./data.txttouch data.txtdelimiter=&amp;apos;,&amp;apos;for((i=0;i&amp;lt;20000">
-<meta name="keywords" content="Hive">
+  <meta name="description" content="系统环境   环境 备注     Ubuntu 18.04 on windows 10 Win10子系统   Mysql  5.7.21 Mysql的在线文档    安装MysqlInstalling MySQL with APTshell&amp;gt; sudo apt-get install mysql-server Reset root’s password1. use SET PASSWORDS">
+<meta name="keywords" content="Mysql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hive 一次数据清洗的记录">
-<meta property="og:url" content="http://www.vins.site/2018/07/05/Hive-一次数据清洗的记录/index.html">
+<meta property="og:title" content="UbuntuOnWin10 安装Mysql">
+<meta property="og:url" content="http://www.vins.site/2018/06/03/UbuntuOnWin10-安装Mysql/index.html">
 <meta property="og:site_name" content="Vincent&#39;s blog">
-<meta property="og:description" content="HIVE数据清洗需求通过自定义简单的数据清洗场景，来练习hive的几个常用内置函数。例如字符串拼接，条件选择，字符串正则替换，数据筛选等。通过脚本生成测试数据集，然后根据需求清洗数据。 测试数据集的准备使用脚本生成数据集12345678910111213rm -rf ./data.txttouch data.txtdelimiter=&amp;apos;,&amp;apos;for((i=0;i&amp;lt;20000">
+<meta property="og:description" content="系统环境   环境 备注     Ubuntu 18.04 on windows 10 Win10子系统   Mysql  5.7.21 Mysql的在线文档    安装MysqlInstalling MySQL with APTshell&amp;gt; sudo apt-get install mysql-server Reset root’s password1. use SET PASSWORDS">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-22T17:03:51.506Z">
+<meta property="og:updated_time" content="2019-04-22T17:20:54.969Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hive 一次数据清洗的记录">
-<meta name="twitter:description" content="HIVE数据清洗需求通过自定义简单的数据清洗场景，来练习hive的几个常用内置函数。例如字符串拼接，条件选择，字符串正则替换，数据筛选等。通过脚本生成测试数据集，然后根据需求清洗数据。 测试数据集的准备使用脚本生成数据集12345678910111213rm -rf ./data.txttouch data.txtdelimiter=&amp;apos;,&amp;apos;for((i=0;i&amp;lt;20000">
+<meta name="twitter:title" content="UbuntuOnWin10 安装Mysql">
+<meta name="twitter:description" content="系统环境   环境 备注     Ubuntu 18.04 on windows 10 Win10子系统   Mysql  5.7.21 Mysql的在线文档    安装MysqlInstalling MySQL with APTshell&amp;gt; sudo apt-get install mysql-server Reset root’s password1. use SET PASSWORDS">
   
     <link rel="alternative" href="/atom.xml" title="Vincent&#39;s blog" type="application/atom+xml">
   
@@ -165,48 +165,77 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Hive-一次数据清洗的记录" class="article article-type-post " itemscope="" itemprop="blogPost">
+            <article id="post-UbuntuOnWin10-安装Mysql" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hive 一次数据清洗的记录
+      UbuntuOnWin10 安装Mysql
     </h1>
   
 
         
-        <a href="/2018/07/05/Hive-一次数据清洗的记录/" class="archive-article-date">
-  	<time datetime="2018-07-05T15:12:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-05</time>
+        <a href="/2018/06/03/UbuntuOnWin10-安装Mysql/" class="archive-article-date">
+  	<time datetime="2018-06-03T02:43:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="HIVE数据清洗需求"><a href="#HIVE数据清洗需求" class="headerlink" title="HIVE数据清洗需求"></a>HIVE数据清洗需求</h1><p>通过自定义简单的数据清洗场景，来练习hive的几个常用内置函数。例如字符串拼接，条件选择，字符串正则替换，数据筛选等。<br>通过脚本生成测试数据集，然后根据需求清洗数据。</p>
-<h1 id="测试数据集的准备"><a href="#测试数据集的准备" class="headerlink" title="测试数据集的准备"></a>测试数据集的准备</h1><h2 id="使用脚本生成数据集"><a href="#使用脚本生成数据集" class="headerlink" title="使用脚本生成数据集"></a>使用脚本生成数据集</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ./data.txt</span><br><span class="line">touch data.txt</span><br><span class="line">delimiter=&apos;,&apos;</span><br><span class="line">for((i=0;i&lt;20000;i++))</span><br><span class="line">do</span><br><span class="line">str1=&apos;name&apos;;</span><br><span class="line">str2=`openssl rand -base64 8`</span><br><span class="line">num1=`echo $RANDOM`</span><br><span class="line">name=$&#123;i&#125;$&#123;delimiter&#125;$&#123;str1&#125;$&#123;i&#125;$&#123;delimiter&#125;$&#123;str2&#125;$&#123;delimiter&#125;$&#123;num1&#125;</span><br><span class="line">echo  $name&gt;&gt;data.txt</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">echo &quot;The data has been generated&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="创建测试表"><a href="#创建测试表" class="headerlink" title="创建测试表"></a>创建测试表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE IF NOT EXISTS userdata(id INT, name STRING, password STRING, salary INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY &apos;,&apos;;</span><br></pre></td></tr></table></figure>
-<h2 id="导入测试数据"><a href="#导入测试数据" class="headerlink" title="导入测试数据"></a>导入测试数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># beeline 连接</span><br><span class="line">beeline&gt; !connect jdbc:hive2://localhost:10000</span><br><span class="line"># 上传数据</span><br><span class="line">LOAD DATA LOCAL INPATH &apos;/root/vin/data.txt&apos; OVERWRITE INTO TABLE userdata;</span><br></pre></td></tr></table></figure>
-<h2 id="数据上传hdfs"><a href="#数据上传hdfs" class="headerlink" title="数据上传hdfs"></a>数据上传hdfs</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs dfs -put &lt;local path&gt; &lt;remote path&gt;</span><br></pre></td></tr></table></figure>
-<h1 id="定义数据场景"><a href="#定义数据场景" class="headerlink" title="定义数据场景"></a>定义数据场景</h1><ol>
-<li>数据清除<br> 去除用户名为3结尾的用户数据</li>
-<li>数据修改<ul>
-<li>将用户薪水转为美金结算</li>
-<li>将用户名密码中包含的数字替换为$符号</li>
-<li>当用户薪水大于20000时，添加用户名前缀tuhao_</li>
-</ul>
-</li>
-<li>数据增量<ul>
-<li>拆分用户密码前4个字符作为新字段group</li>
-<li>将用户名和密码合并为登陆字串login</li>
-</ul>
+        <h1 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h1><table>
+<thead>
+<tr>
+<th>环境</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ubuntu 18.04 on windows 10</td>
+<td>Win10子系统</td>
+</tr>
+<tr>
+<td>Mysql  5.7.21</td>
+<td><a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener">Mysql的在线文档</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="安装Mysql"><a href="#安装Mysql" class="headerlink" title="安装Mysql"></a>安装Mysql</h1><h2 id="Installing-MySQL-with-APT"><a href="#Installing-MySQL-with-APT" class="headerlink" title="Installing MySQL with APT"></a>Installing MySQL with APT</h2><p><code>shell&gt; sudo apt-get install mysql-server</code></p>
+<h2 id="Reset-root’s-password"><a href="#Reset-root’s-password" class="headerlink" title="Reset root’s password"></a>Reset root’s password</h2><h3 id="1-use-SET-PASSWORD"><a href="#1-use-SET-PASSWORD" class="headerlink" title="1. use SET PASSWORD"></a>1. use <code>SET PASSWORD</code></h3><p><code>SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;newpassword&#39;);</code></p>
+<h3 id="2-use-mysqladmin"><a href="#2-use-mysqladmin" class="headerlink" title="2. use mysqladmin"></a>2. use <code>mysqladmin</code></h3><p><code>mysqladmin -u root password &quot;newpass&quot;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mysql root用户修改密码</span><br><span class="line">mysqladmin --user=root --password=12345 password &quot;gue55me&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-if-you-forgot-the-old-password"><a href="#3-if-you-forgot-the-old-password" class="headerlink" title="3. if you forgot the old password"></a>3. if you forgot the old password</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo service mysql stop</span><br><span class="line">&gt; mysqld_safe --skip-grant-tables --skip-networking</span><br><span class="line">&gt; mysql -u root mysql</span><br><span class="line">mysql&gt; UPDATE mysql.user</span><br><span class="line">    SET authentication_string = PASSWORD(&apos;MyNewPass&apos;), password_expired = &apos;N&apos;</span><br><span class="line">    WHERE User = &apos;root&apos; AND Host = &apos;localhost&apos;;</span><br><span class="line">    FLUSH PRIVILEGES;</span><br><span class="line">    exit;</span><br><span class="line"># 查看参考[4]获得更详细的说明</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="Solve-the-problems"><a href="#Solve-the-problems" class="headerlink" title="Solve the problems"></a>Solve the problems</h2><h3 id="1-check-the-temporary-password"><a href="#1-check-the-temporary-password" class="headerlink" title="1. check the temporary password"></a>1. check the temporary password</h3><p>在安装过程中如果没有设置密码，mysql5.7会随机生成一个密码。可以在’/var/log/mysqld.log’日志文件中查询安装时生成的临时密码。<br><code>grep &quot;A temporary password&quot;  /var/log/mysqld.log</code></p>
+<h3 id="2-Ubuntu-on-win-10-ERROR-1698-28000"><a href="#2-Ubuntu-on-win-10-ERROR-1698-28000" class="headerlink" title="2. Ubuntu on win 10 - ERROR 1698 (28000)"></a>2. Ubuntu on win 10 - ERROR 1698 (28000)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vin@Vin-Laptop:~$ mysql -u root -p</span><br><span class="line">Enter password:</span><br><span class="line">ERROR 1698 (28000): Access denied for user &apos;root&apos;@&apos;localhost&apos;</span><br></pre></td></tr></table></figure>
+<p>使用<code>sudo mysql -u root -p</code>可以使用空密码登陆，设置密码之后却依然无法使用该密码登陆。使用远程连接工具是也是失败。<br>原因是这个版本mysql（5.7）使用 <code>auth_socket</code>进行认证（ 一些系统<code>auth_socket</code> plugin 也称作 <code>unix_socket</code> ），不知到其他版本是否也有这种默认行为。可以通过查看<code>mysql.user</code>表查看到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mysql -u root # I had to use &quot;sudo&quot; since is new installation</span><br><span class="line"></span><br><span class="line">mysql&gt; USE mysql;</span><br><span class="line">mysql&gt; SELECT User, Host, plugin FROM mysql.user;</span><br><span class="line"></span><br><span class="line">+------------------+-----------------------+</span><br><span class="line">| User             | plugin                |</span><br><span class="line">+------------------+-----------------------+</span><br><span class="line">| root             | auth_socket           |</span><br><span class="line">| mysql.sys        | mysql_native_password |</span><br><span class="line">| debian-sys-maint | mysql_native_password |</span><br><span class="line">+------------------+-----------------------+</span><br></pre></td></tr></table></figure></p>
+<p>发现<code>root</code>的认知方式使用<code>auth_socket</code>方式进行认证。这意味着mysql默认使用系统用户的认证凭据进行认证。<br>解决这个问题的方法有两种：</p>
+<ol>
+<li>使用 <code>mysql_native_password</code> plugin 代替 <code>auth_socket</code></li>
+<li>You can create a new db_user with you system_user (recommended)</li>
+<li><strong>Option 1</strong><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mysql -u root # I had to use &quot;sudo&quot; since is new installation</span><br><span class="line"></span><br><span class="line">mysql&gt; USE mysql;</span><br><span class="line">mysql&gt; UPDATE user SET plugin=&apos;mysql_native_password&apos; WHERE User=&apos;root&apos;;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br><span class="line">mysql&gt; exit;</span><br><span class="line">$ sudo service mysql restart</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h2 id="数据操作记录"><a href="#数据操作记录" class="headerlink" title="数据操作记录"></a>数据操作记录</h2><h3 id="1-数据清洗HQL"><a href="#1-数据清洗HQL" class="headerlink" title="1. 数据清洗HQL"></a>1. 数据清洗HQL</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE userdata_etl AS </span><br><span class="line">SELECT id, </span><br><span class="line">CASE WHEN salary &gt; 20000 THEN concat(&quot;tuhao_&quot;, name) ELSE name END AS new_name, </span><br><span class="line">regexp_replace(password, &apos;\\d&apos;, &apos;\\$&apos;) AS safe_pass, </span><br><span class="line">salary*6.64 AS usd_salary,</span><br><span class="line">substr(password, 1, 4) AS user_group,</span><br><span class="line">concat(&quot;&#123;login:&quot;, name, &quot;,password:&quot;, password, &quot;&#125;&quot;) AS login_string</span><br><span class="line">FROM workspace.userdata</span><br><span class="line">WHERE name NOT LIKE &quot;%3&quot;;</span><br></pre></td></tr></table></figure>
-<h3 id="2-解决问题"><a href="#2-解决问题" class="headerlink" title="2. 解决问题"></a>2. 解决问题</h3><p>在执行上述HQL语句时，曾出现以下错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error while processing statement: FAILED: Execution Error, return code 2 from org.apache.hadoop.hive.ql.exec.mr.MapRedTask (state=08S01,code=2)</span><br></pre></td></tr></table></figure></p>
-<p>通过独立测试发现时正则替换时发生的错误，在修改之前我的正则替换语句如下<code>regexp_replace(password, &#39;\d&#39;, &#39;$&#39;)</code>，后来发现<code>$</code>应该是不能被直接作为替换字符的，需要转义，同时发现<code>\d</code>也无法直接匹配的数字。通过查阅资料了解到正确的写法应该如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select regexp_replace(password, &apos;\\d&apos;, &apos;\\$&apos;) from userdata;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Option 2</strong>: (replace YOUR_SYSTEM_USER with the username you have)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mysql -u root # I had to use &quot;sudo&quot; since is new installation</span><br><span class="line"></span><br><span class="line">mysql&gt; USE mysql;</span><br><span class="line">mysql&gt; CREATE USER &apos;YOUR_SYSTEM_USER&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;&apos;;</span><br><span class="line">mysql&gt; GRANT ALL PRIVILEGES ON *.* TO &apos;YOUR_SYSTEM_USER&apos;@&apos;localhost&apos;;</span><br><span class="line">mysql&gt; UPDATE user SET plugin=&apos;auth_socket&apos; WHERE User=&apos;YOUR_SYSTEM_USER&apos;;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br><span class="line">mysql&gt; exit;</span><br></pre></td></tr></table></figure></p>
+<p>$ service mysql restart</p>
+<h2 id="Starting-and-Stopping-the-MySQL-Server"><a href="#Starting-and-Stopping-the-MySQL-Server" class="headerlink" title="Starting and Stopping the MySQL Server"></a>Starting and Stopping the MySQL Server</h2><ol>
+<li>check the status of the MySQL server<br><code>shell&gt; sudo service mysql status</code></li>
+<li>Stop the MySQL server<br> <code>shell&gt; sudo service mysql stop</code></li>
+<li>start the MySQL server<br> <code>shell&gt; sudo service mysql start</code></li>
+</ol>
+<h2 id="testing-Mysql"><a href="#testing-Mysql" class="headerlink" title="testing Mysql"></a>testing Mysql</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> sudo service mysql start</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> mysql -u root -p</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> create database text1;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> show databases;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> quit</span></span><br></pre></td></tr></table></figure>
+<h2 id="使用Windows-app-HeidiSQL连接mysql数据库"><a href="#使用Windows-app-HeidiSQL连接mysql数据库" class="headerlink" title="使用Windows app - HeidiSQL连接mysql数据库"></a>使用Windows app - HeidiSQL连接mysql数据库</h2><ul>
+<li><a href="https://www.heidisql.com/download.php" target="_blank" rel="noopener">桌面客户端下载地址</a></li>
+<li><a href="ms-windows-store://pdp/?productid=9NXPRT2T0ZJF" target="_blank" rel="noopener">Windows 10 APP 下载地址</a></li>
+</ul>
+<p>总是连接失败，查看参考[2]</p>
+<h3 id="开放防火墙端口"><a href="#开放防火墙端口" class="headerlink" title="开放防火墙端口"></a>开放防火墙端口</h3><p><code>ufw allow 3306</code></p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p>[1] <a href="https://kwiksteps.com/mysql-ubuntu-on-windows/" target="_blank" rel="noopener">How To Setup MySQL Server On Bash On Ubuntu On Windows</a><br>[2] <a href="https://stackoverflow.com/questions/39281594/error-1698-28000-access-denied-for-user-rootlocalhost" target="_blank" rel="noopener">ERROR 1698 (28000): Access denied for user ‘root‘@’localhost’
+</a><br>[3] <a href="http://www.jb51.net/article/109259.htm" target="_blank" rel="noopener">mysql修改root密码的三种方式</a><br>[4] <a href="https://stackoverflow.com/questions/4258124/how-to-reset-mysql-root-password" target="_blank" rel="noopener">How to reset mysql root password?</a></p>
+</blockquote>
 
       
 
@@ -251,7 +280,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hive</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
         		</li>
       		
 		</ul>
@@ -307,7 +336,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://www.vins.site/2018/07/05/Hive-一次数据清洗的记录/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://www.vins.site/2018/06/03/UbuntuOnWin10-安装Mysql/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -321,18 +350,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/08/Python-类变量不是线程安全的/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/06/15/Pyspider-分布式部署/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Python 类变量不是线程安全的
+          Pyspider 分布式部署
         
       </div>
     </a>
   
   
-    <a href="/2018/06/15/Pyspider-分布式部署/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Pyspider 分布式部署</div>
+    <a href="/2018/05/25/Hadoop-单机模式、伪分布式和完全分布式模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hadoop 单机模式、伪分布式和完全分布式模式</div>
       <i class="icon-circle-right"></i>
     </a>
   

@@ -165,105 +165,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-单例模式" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/04/单例模式/">单例模式</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/04/单例模式/" class="archive-article-date">
-  	<time datetime="2018-09-04T06:20:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>单例模式(Singleton Pattern)</p>
-<blockquote>
-<p>Ensure a class has only one instance, and provide a global point of access to it. （确保某一个类只有一个实例，而且能自行实例化并向整个系统提供这个实例）</p>
-</blockquote>
-<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    最简单的单例模式</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">_A</span><span class="params">(object)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">       真正干活的类, 对外隐藏</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="string">""" 返回当前实例的 ID，是全局唯一的"""</span></span><br><span class="line">            <span class="keyword">return</span> id(self)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 类变量，用于存储 _A 的实例</span></span><br><span class="line">    _instance = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> Singleton._instance <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            Singleton._instance = Singleton._A()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, attr)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> getattr(self._instance, attr)</span><br></pre></td></tr></table></figure>
-<h2 id="单例模式的优点"><a href="#单例模式的优点" class="headerlink" title="单例模式的优点"></a>单例模式的优点</h2><ul>
-<li>单例模式在内存中只有一个实例，减少了内存的开支。当一个对象需要频繁地创建、销毁，而且创建或销毁时性能无法优化，单例模式的的优势就非常明显。</li>
-<li>单例模式只生成一个实例，减少了系统性能的开销</li>
-<li>单例模式可以避免对资源的多重占用</li>
-<li>单例模式可以在系统设置全局的访问点，优化和共享资源访问</li>
-</ul>
-<h2 id="单例模式的缺点"><a href="#单例模式的缺点" class="headerlink" title="单例模式的缺点"></a>单例模式的缺点</h2><ul>
-<li>单例模式一般没有接口，拓展很困难</li>
-<li>单例模式对测试不利的，如果单例模式没有完成无法进行测试</li>
-<li>单例模式于单一职责原则由冲突</li>
-</ul>
-<h2 id="单例模式的应用场景"><a href="#单例模式的应用场景" class="headerlink" title="单例模式的应用场景"></a>单例模式的应用场景</h2><ul>
-<li>要求生成唯一序列号的环境</li>
-<li>创建一个对象需要消耗的资源过多，如访问IO和数据库</li>
-<li>需要定义大量的静态常量和静态方法</li>
-</ul>
-<h2 id="单例模式的注意事项"><a href="#单例模式的注意事项" class="headerlink" title="单例模式的注意事项"></a>单例模式的注意事项</h2><p>在高并发的情况下，需要注意单例模式的线程同步问题。单例模式在低并发的情况尚且不会出现问题，若系统压力增大，并发量增加时可能在内存中出现多个实例。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 饿汉式单例</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 限制产生多个对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton = <span class="keyword">new</span> Singleton();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 通过该方法获得实例对象</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//类中的其它方法，尽量是static</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// pass</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/04/单例模式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-Centos-下安装机器学习开发环境(Anaconda)" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -695,6 +596,103 @@
 
 
   
+    <article id="post-UbuntuOnWin10-安装Mysql" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/03/UbuntuOnWin10-安装Mysql/">UbuntuOnWin10 安装Mysql</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/03/UbuntuOnWin10-安装Mysql/" class="archive-article-date">
+  	<time datetime="2018-06-03T02:43:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-03</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h1><table>
+<thead>
+<tr>
+<th>环境</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ubuntu 18.04 on windows 10</td>
+<td>Win10子系统</td>
+</tr>
+<tr>
+<td>Mysql  5.7.21</td>
+<td><a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener">Mysql的在线文档</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="安装Mysql"><a href="#安装Mysql" class="headerlink" title="安装Mysql"></a>安装Mysql</h1><h2 id="Installing-MySQL-with-APT"><a href="#Installing-MySQL-with-APT" class="headerlink" title="Installing MySQL with APT"></a>Installing MySQL with APT</h2><p><code>shell&gt; sudo apt-get install mysql-server</code></p>
+<h2 id="Reset-root’s-password"><a href="#Reset-root’s-password" class="headerlink" title="Reset root’s password"></a>Reset root’s password</h2><h3 id="1-use-SET-PASSWORD"><a href="#1-use-SET-PASSWORD" class="headerlink" title="1. use SET PASSWORD"></a>1. use <code>SET PASSWORD</code></h3><p><code>SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;newpassword&#39;);</code></p>
+<h3 id="2-use-mysqladmin"><a href="#2-use-mysqladmin" class="headerlink" title="2. use mysqladmin"></a>2. use <code>mysqladmin</code></h3><p><code>mysqladmin -u root password &quot;newpass&quot;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mysql root用户修改密码</span><br><span class="line">mysqladmin --user=root --password=12345 password &quot;gue55me&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-if-you-forgot-the-old-password"><a href="#3-if-you-forgot-the-old-password" class="headerlink" title="3. if you forgot the old password"></a>3. if you forgot the old password</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo service mysql stop</span><br><span class="line">&gt; mysqld_safe --skip-grant-tables --skip-networking</span><br><span class="line">&gt; mysql -u root mysql</span><br><span class="line">mysql&gt; UPDATE mysql.user</span><br><span class="line">    SET authentication_string = PASSWORD(&apos;MyNewPass&apos;), password_expired = &apos;N&apos;</span><br><span class="line">    WHERE User = &apos;root&apos; AND Host = &apos;localhost&apos;;</span><br><span class="line">    FLUSH PRIVILEGES;</span><br><span class="line">    exit;</span><br><span class="line"># 查看参考[4]获得更详细的说明</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2018/06/03/UbuntuOnWin10-安装Mysql/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/03/UbuntuOnWin10-安装Mysql/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Hadoop-单机模式、伪分布式和完全分布式模式" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
@@ -969,7 +967,7 @@
         <h2 id="关于Chrome-headless"><a href="#关于Chrome-headless" class="headerlink" title="关于Chrome headless"></a>关于Chrome headless</h2><p>前几天我注意到Chrome发布了一个新特性-headless。Chrome headless跟普通的chrome浏览器一样，只不过没有浏览器界面，那么机器“浏览”网页就显得更加的自然，可以直接在Linux系统上使用chrome 的 headless 版本进行自动化测试。</p>
 <h2 id="下载webdriver"><a href="#下载webdriver" class="headerlink" title="下载webdriver"></a>下载webdriver</h2><ul>
 <li><p><a href="https://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">chromedriver</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 可以使用一下代码快速获取最新的chromedriver</span><br><span class="line"><span class="meta">#</span> platform options: linux32, linux64, mac64, win32</span><br><span class="line">PLATFORM=linux64</span><br><span class="line">VERSION=$(curl http://chromedriver.storage.googleapis.com/LATEST_RELEASE)</span><br><span class="line">curl http://chromedriver.storage.googleapis.com/$VERSION/chromedriver_$PLATFORM.zip | bsdtar -xvf - -C env/bin/</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 可以使用一下代码快速获取最新的chromedriver</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> platform options: linux32, linux64, mac64, win32</span></span><br><span class="line">PLATFORM=linux64</span><br><span class="line">VERSION=$(curl http://chromedriver.storage.googleapis.com/LATEST_RELEASE)</span><br><span class="line">curl http://chromedriver.storage.googleapis.com/$VERSION/chromedriver_$PLATFORM.zip | bsdtar -xvf - -C env/bin/</span><br></pre></td></tr></table></figure>
 </li>
 <li><p><a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="noopener">geckodriver - firefox</a></p>
 </li>
@@ -990,15 +988,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
         		</li>
       		
 		</ul>
@@ -1135,23 +1133,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Atom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1159,7 +1145,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Spider</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1171,11 +1157,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Spider</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1192,6 +1174,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1219,6 +1205,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">爬虫</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Scrapy</a>
               </li>
              
@@ -1240,6 +1230,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Software</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
               </li>
              
               <li class="article-tag-list-item">
