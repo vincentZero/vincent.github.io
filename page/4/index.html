@@ -165,29 +165,32 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-添加Github远程仓库" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-MongoDB数据库基本操作" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/08/添加Github远程仓库/">添加Github远程仓库</a>
+      <a class="article-title" href="/2017/04/18/MongoDB数据库基本操作/">MongoDB数据库基本操作</a>
     </h1>
   
 
         
-        <a href="/2016/05/08/添加Github远程仓库/" class="archive-article-date">
-  	<time datetime="2016-05-08T12:16:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-08</time>
+        <a href="/2017/04/18/MongoDB数据库基本操作/" class="archive-article-date">
+  	<time datetime="2017-04-18T06:12:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-18</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="0x01-在Github上新建仓库"><a href="#0x01-在Github上新建仓库" class="headerlink" title="0x01 在Github上新建仓库"></a>0x01 在Github上新建仓库</h2><p>注册github账号，在github上创建新仓库。<br><img src="http://sinacloud.net/vinimg/GithubPage/createRepository.png" alt="createRepository"><br>
+        <h1 id="0x01-连接mongo"><a href="#0x01-连接mongo" class="headerlink" title="0x01 连接mongo"></a>0x01 连接mongo</h1><p><code>mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]</code></p>
+<h1 id="0x02-创建数据库"><a href="#0x02-创建数据库" class="headerlink" title="0x02 创建数据库"></a>0x02 创建数据库</h1><p><code>use DATABASE_NAME</code> 如果数据库不存在，则创建数据库，否则切换到指定数据库。<br><code>show dbs</code> 显示所有数据库<br><code>db</code> 显示当前所在数据库</p>
+<h1 id="0x03-删除数据库"><a href="#0x03-删除数据库" class="headerlink" title="0x03 删除数据库"></a>0x03 删除数据库</h1><p><code>db.dropDatabase()</code> 删除当前数据库<br><code>db.COLLECTION_NAME.drop()</code> 删除集合</p>
+<h1 id="0x04-插入文档"><a href="#0x04-插入文档" class="headerlink" title="0x04 插入文档"></a>0x04 插入文档</h1><p>文档的数据结构和JSON基本一样。<br>所有存储在集合中的数据都是BSON格式。<br>BSON是一种类json的一种二进制形式的存储格式,简称Binary JSON。<br><code>db.COLLECTION_NAME.insert(document)</code> 向集合中插入文档<br>
         
-          <a class="article-more-a" href="/2016/05/08/添加Github远程仓库/#more">more >></a>
+          <a class="article-more-a" href="/2017/04/18/MongoDB数据库基本操作/#more">more >></a>
         
       
 
@@ -201,7 +204,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
         		</li>
       		
 		</ul>
@@ -211,7 +214,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/05/08/添加Github远程仓库/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/04/18/MongoDB数据库基本操作/">展开全文 >></a>
         </p>
       
 
@@ -241,45 +244,40 @@
 
 
   
-    <article id="post-Atom-安装-activate-power-mode" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-Linux下多版本PYTHON切换" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/05/04/Atom-安装-activate-power-mode/">Atom 安装 activate-power-mode</a>
+      <a class="article-title" href="/2017/03/28/Linux下多版本PYTHON切换/">Linux下多版本PYTHON切换</a>
     </h1>
   
 
         
-        <a href="/2016/05/04/Atom-安装-activate-power-mode/" class="archive-article-date">
-  	<time datetime="2016-05-04T05:57:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-05-04</time>
+        <a href="/2017/03/28/Linux下多版本PYTHON切换/" class="archive-article-date">
+  	<time datetime="2017-03-28T06:32:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="直接安装时遇到问题"><a href="#直接安装时遇到问题" class="headerlink" title="直接安装时遇到问题"></a>直接安装时遇到问题</h1><p><img src="http://cdn.sinacloud.net/vinimg/GithubPage/installerror.png" alt="installerror.png"></p>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><h2 id="0x01-安装-activate-power-mode"><a href="#0x01-安装-activate-power-mode" class="headerlink" title="0x01 安装 activate-power-mode"></a>0x01 安装 activate-power-mode</h2><p><strong><a href="https://github.com/JoelBesada/activate-power-mode/archive/master.zip" target="_blank" rel="noopener">activate-power-mode Github 下载地址</a></strong></p>
+        <h2 id="pyenv"><a href="#pyenv" class="headerlink" title="pyenv"></a>pyenv</h2><p>pyenv是一个能简易地在多个Python版本中进行切换的工具，它简单而优雅</p>
 <ul>
-<li>解压插件源码包</li>
-<li>复制到~/.atom/packages/</li>
-<li>在~/.atom/packages/ 目录下打开命令行</li>
-<li>输入 apm install activate-power-mode</li>
-</ul>
-<h2 id="0x02-开启-activate-power-mode"><a href="#0x02-开启-activate-power-mode" class="headerlink" title="0x02 开启 activate-power-mode"></a>0x02 开启 activate-power-mode</h2><ul>
-<li>打开Atom</li>
-<li>ctrl + shift + p 打开命令行</li>
-<li>输入window: Reload</li>
-<li>ctrl + alt + o 开启插件</li>
-</ul>
-
+<li>进行全局的Python版本切换</li>
+<li>为单个项目提供对应的Python版本</li>
+<li>只依赖Python本身</li>
+<li>自带virtualenv 能够进行virtualenv管理</li>
+<li>提供下载不同的Python版本和衍生版本
+        
+          <a class="article-more-a" href="/2017/03/28/Linux下多版本PYTHON切换/#more">more >></a>
+        
       
 
       
-    </div>
+    </li></ul></div>
     <div class="article-info article-info-index">
       
       
@@ -288,7 +286,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Atom</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -298,7 +296,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/05/04/Atom-安装-activate-power-mode/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/03/28/Linux下多版本PYTHON切换/">展开全文 >></a>
         </p>
       
 
@@ -328,30 +326,31 @@
 
 
   
-    <article id="post-如何使用Markdown写博客" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-Scrapy-发送-JSON 数据" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/04/30/如何使用Markdown写博客/">如何使用Markdown写博客</a>
+      <a class="article-title" href="/2017/03/13/Scrapy-发送-JSON 数据/">Scrapy 发送 JSON 数据</a>
     </h1>
   
 
         
-        <a href="/2016/04/30/如何使用Markdown写博客/" class="archive-article-date">
-  	<time datetime="2016-04-30T11:26:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-04-30</time>
+        <a href="/2017/03/13/Scrapy-发送-JSON 数据/" class="archive-article-date">
+  	<time datetime="2017-03-13T13:12:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[TOC]</p>
-<h2 id="0x01-什么是Markdown？"><a href="#0x01-什么是Markdown？" class="headerlink" title="0x01 什么是Markdown？"></a>0x01 什么是Markdown？</h2><p>Markdown是一种书写格式。Markdown的出现是为了解决文字创作过程中过分注重文档格式的问题，从而使我们能更专注于文字内容。<br>具体来说，Markdown是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档。<br>
+        <h1 id="如何使用Scrapy发送JSON数据"><a href="#如何使用Scrapy发送JSON数据" class="headerlink" title="如何使用Scrapy发送JSON数据"></a>如何使用Scrapy发送JSON数据</h1><p>在使用scrapy爬取tti网站数据的时候发现，tti的一个接口无法正确地识别发送的数据，后来经过测试发现是发送的数据格式不正确造成的。于是记录下解决这个问题的过程。</p>
+<h2 id="编写测试代码"><a href="#编写测试代码" class="headerlink" title="编写测试代码"></a>编写测试代码</h2><p>一开始查看文档想到使用Form.Request<br>所以是构造一下访问请求<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">process_url = <span class="string">'https://www.ttiinc.com/bin/services/processData?jsonPayloadAvailable=true&amp;osgiService=partsearchpost'</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Host'</span>: <span class="string">'www.ttiinc.com'</span>,</span><br><span class="line">    <span class="string">'Connection'</span>: <span class="string">'keep-alive'</span>,</span><br><span class="line">    <span class="string">'Content-Length'</span>: <span class="string">'108'</span>,</span><br><span class="line">    <span class="string">'Accept'</span>: <span class="string">'application/json, text/plain, */*'</span>,</span><br><span class="line">    <span class="string">'CSRF-Token'</span>: <span class="string">'undefined'</span>,</span><br><span class="line">    <span class="string">'Origin'</span>: <span class="string">'https://www.ttiinc.com'</span>,</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'</span>,</span><br><span class="line">    <span class="string">'Content-Type'</span>: <span class="string">'application/json;charset=UTF-8'</span>,</span><br><span class="line">    <span class="string">'DNT'</span>: <span class="string">'1'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>: <span class="string">'https://www.ttiinc.com/content/ttiinc/en/apps/part-search.html?manufacturers=&amp;searchTerms=&amp;systemsCatalog=254428'</span>,</span><br><span class="line">    <span class="string">'Accept-Encoding'</span>: <span class="string">'gzip, deflate, br'</span>,</span><br><span class="line">    <span class="string">'Accept-Language'</span>: <span class="string">'en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4'</span>,</span><br><span class="line">&#125;</span><br><span class="line">data = &#123;<span class="string">"searchTerms"</span>:<span class="string">""</span>,<span class="string">"systemsCatalog"</span>:<span class="string">"254428"</span>,<span class="string">"inStock"</span>:<span class="string">""</span>,<span class="string">"rohsCompliant"</span>:<span class="string">""</span>,<span class="string">"leadFree"</span>:<span class="string">""</span>,<span class="string">"containsLead"</span>:<span class="string">""</span>&#125;</span><br><span class="line"></span><br><span class="line">FormRequest(url=processData_url, formdata=data, headers=headers)</span><br></pre></td></tr></table></figure></p>
+<p>返回结果为400<br>
         
-          <a class="article-more-a" href="/2016/04/30/如何使用Markdown写博客/#more">more >></a>
+          <a class="article-more-a" href="/2017/03/13/Scrapy-发送-JSON 数据/#more">more >></a>
         
       
 
@@ -365,7 +364,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Scrapy</a>
         		</li>
       		
 		</ul>
@@ -375,7 +378,589 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/04/30/如何使用Markdown写博客/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/03/13/Scrapy-发送-JSON 数据/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-获取重定向的location值" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/12/获取重定向的location值/">获取重定向的location值</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/12/获取重定向的location值/" class="archive-article-date">
+  	<time datetime="2017-03-12T02:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="获取location-值"><a href="#获取location-值" class="headerlink" title="获取location 值"></a>获取location 值</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># requests.request allow_redirects Defaults to True</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_redirect_url</span><span class="params">(url)</span>:</span></span><br><span class="line">    <span class="comment"># 先设置allow_redirects = False</span></span><br><span class="line">    response = requests.get(url=url, data=form_data, headers=default_headers, allow_redirects=<span class="keyword">False</span>)</span><br><span class="line">    <span class="comment"># 通常会需要拼接url</span></span><br><span class="line">    redirect_url = urlparse.urljoin(url, response.headers.get(<span class="string">'location'</span>))</span><br><span class="line">    <span class="keyword">return</span> redirect_url</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Requests</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/12/获取重定向的location值/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-使用session还是request" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/12/使用session还是request/">使用session还是request</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/12/使用session还是request/" class="archive-article-date">
+  	<time datetime="2017-03-12T00:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="最初的问题"><a href="#最初的问题" class="headerlink" title="最初的问题"></a>最初的问题</h1><p>在使用爬虫爬去网站数据时，有一项数据需要将商品添加到购物车之后才能读取，问题是如果我使用session来维持会话的话，我就要不断的添加商品删除商品，读取不同商品的属性值。这时我选择了不断地发起session请求，添加一件商品读取完商品属性后就丢弃改session，重新新建session来访问，那这样会不会对服务器造成很大的负担？</p>
+<h2 id="Session-是持久连接"><a href="#Session-是持久连接" class="headerlink" title="Session 是持久连接"></a>Session 是持久连接</h2><p>Session 是保持状态的持久连接。服务器会记录Session的id，将Session的内容存储在服务器内存。所以在爬虫项目中如果重复构建新的Session去连接服务器，目标服务器的消耗资源会很多，服务器压力大。</p>
+<h2 id="request-是无状态的"><a href="#request-是无状态的" class="headerlink" title="request 是无状态的"></a>request 是无状态的</h2><p>request 是无状态的，服务器不需要记录连接的状态</p>
+<h2 id="request-和-session-的作用域不同"><a href="#request-和-session-的作用域不同" class="headerlink" title="request 和 session 的作用域不同"></a>request 和 session 的作用域不同</h2><ul>
+<li>request 在当前请求中有效</li>
+<li>session 在当前会话中有效，购物车应用</li>
+</ul>
+<h2 id="session-和-cookies-的区别？"><a href="#session-和-cookies-的区别？" class="headerlink" title="session 和 cookies 的区别？"></a>session 和 cookies 的区别？</h2><p>Session是在服务端保存的一个数据结构，用来跟踪用户的状态，这个数据可以保存在集群、数据库、文件中。   Cookie是客户端保存用户信息的一种机制，用来记录用户的一些信息，也是实现Session的一种方式。  </p>
+<p>由于HTTP协议是无状态的协议，所以服务端需要记录用户的状态时，就需要用某种机制来识具体的用户，这个机制就是Session.典型的场景比如购物车，当你点击下单按钮时，由于HTTP协议无状态，所以并不知道是哪个用户操作的，所以服务端要为特定的用户创建了特定的Session，用用于标识这个用户，并且跟踪用户，这样才知道购物车里面有几本书。这个Session是保存在服务端的，有一个唯一标识。<br>那么服务端是怎么识别这个特定的用户的？<br>服务端会在HTTP协议中告诉客户端，需要在 Cookie 里面记录一个Session ID，以后每次请求把这个会话ID发送到服务器，我就知道你是谁了。有人问，如果客户端的浏览器禁用了 Cookie 怎么办？一般这种情况下，会使用一种叫做URL重写的技术来进行会话跟踪，即每次HTTP交互，URL后面都会被附加上一个诸如 sid=xxxxx 这样的参数，服务端据此来识别用户。<br>每次HTTP请求的时候，客户端都会发送相应的Cookie信息到服务端。实际上大多数的应用都是用 Cookie 来实现Session跟踪的，第一次创建Session的时候，服务端会在HTTP协议中告诉客户端，需要在 Cookie 里面记录一个Session ID，以后每次请求把这个会话ID发送到服务器，我就知道你是谁了。</p>
+<blockquote>
+<p>参考</p>
+<ul>
+<li><a href="https://www.zhihu.com/question/19786827" target="_blank" rel="noopener">知乎问题COOKIE和SESSION有什么区别？</a></li>
+<li><a href="http://bubkoo.com/2014/04/21/http-cookies-explained/" target="_blank" rel="noopener">cookies的详解</a></li>
+</ul>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Requests</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/12/使用session还是request/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-response_content-和-response_text-有何不同" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/12/response_content-和-response_text-有何不同/">response.content 和 response.text 有何不同</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/12/response_content-和-response_text-有何不同/" class="archive-article-date">
+  	<time datetime="2017-03-12T00:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="类型不同"><a href="#类型不同" class="headerlink" title="类型不同"></a>类型不同</h2><p>r.text is the content of the response in unicode, and r.content is the content of the response in bytes.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">response.content type: &lt;type 'str'&gt; </span></span><br><span class="line"><span class="string">response.text type: &lt;type 'unicode'&gt;</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">diff_content_text</span><span class="params">()</span>:</span></span><br><span class="line">    r = request.get(<span class="string">'http://www.baidu.com'</span>)</span><br><span class="line">    print(<span class="string">"response.content type: &#123;content&#125; \n"</span></span><br><span class="line">          <span class="string">"response.text type: &#123;text&#125;"</span>.format(content=type(response.content), text=type(response.text)))</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Requests</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/12/response_content-和-response_text-有何不同/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python项目开发约定" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/06/Python项目开发约定/">Python开发建议</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/06/Python项目开发约定/" class="archive-article-date">
+  	<time datetime="2017-03-06T13:54:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h1><h2 id="Sublime-Text-3"><a href="#Sublime-Text-3" class="headerlink" title="Sublime Text 3"></a>Sublime Text 3</h2><h3 id="Package-Control-for-Sublime-Text-3"><a href="#Package-Control-for-Sublime-Text-3" class="headerlink" title="Package Control for Sublime Text 3"></a>Package Control for Sublime Text 3</h3><ol>
+<li><code>ctrl + ~</code>打开控制台</li>
+<li>输入以下<code>python</code>代码<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,os,hashlib; h = <span class="string">'df21e130d211cfc94d9b0905775a7c0f'</span> + <span class="string">'1e3d39e33b79698005270310898eea76'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)).read(); dh = hashlib.sha256(by).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> open(os.path.join( ipp, pf), <span class="string">'wb'</span> ).write(by)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>注：无法安装可是因为<code>packagecontrol.io</code>网站被屏蔽，可以使用代理试试。</p>
+</blockquote>
+<h3 id="WEB-开发系列插件推荐按照"><a href="#WEB-开发系列插件推荐按照" class="headerlink" title="WEB 开发系列插件推荐按照"></a>WEB 开发系列插件推荐按照</h3><table>
+<thead>
+<tr>
+<th style="text-align:center">插件名</th>
+<th style="text-align:left">功能</th>
+<th style="text-align:left">简单描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Emmet</td>
+<td style="text-align:left">HTML、CSS高效编辑插件</td>
+<td style="text-align:left">需要一定的学习成本但是很高效<a href="https://docs.emmet.io/abbreviations/syntax/" target="_blank" rel="noopener">Documentation</a></td>
+</tr>
+<tr>
+<td style="text-align:center">ConverToUTF8</td>
+<td style="text-align:left">解决中文编码乱码问题</td>
+<td style="text-align:left">无</td>
+</tr>
+<tr>
+<td style="text-align:center">HTML/JS/CSS Prettify</td>
+<td style="text-align:left">排版html/css/js</td>
+<td style="text-align:left">快捷键Ctrl+Shift+H美化代码</td>
+</tr>
+<tr>
+<td style="text-align:center">Mardow Preview</td>
+<td style="text-align:left">markdown 文件预览</td>
+<td style="text-align:left">无</td>
+</tr>
+</tbody>
+</table>
+        
+          <a class="article-more-a" href="/2017/03/06/Python项目开发约定/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/06/Python项目开发约定/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-使用pip" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/18/使用pip/">使用pip</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/18/使用pip/" class="archive-article-date">
+  	<time datetime="2017-01-18T06:12:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装pip"><a href="#安装pip" class="headerlink" title="安装pip"></a>安装<code>pip</code></h1><p>一般情况下 <code>python</code> 自带 <code>pip</code> 包管理工具。如果需要手动按照，将 <code>pip</code> 的源码包解压到 <code>python27/Scripts</code>，并将该路径添加到环境变量。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-pip -yq</span><br></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2017/01/18/使用pip/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/18/使用pip/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Requests的基本使用" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/12/Requests的基本使用/">Requests的基本使用</a>
+    </h1>
+  
+
+        
+        <a href="/2017/01/12/Requests的基本使用/" class="archive-article-date">
+  	<time datetime="2017-01-12T00:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="保持请求cookies"><a href="#保持请求cookies" class="headerlink" title="保持请求cookies"></a>保持请求cookies</h1><p><code>session = requests.Session()</code> 使用session请求可以保持请求状态。</p>
+<h1 id="设置请求"><a href="#设置请求" class="headerlink" title="设置请求"></a>设置请求</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">"http://test.com"</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"host"</span>: <span class="string">'test.com'</span>,</span><br><span class="line">    <span class="string">"user-agent"</span>: <span class="string">"requests/python"</span>,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">timeout=<span class="number">30</span></span><br><span class="line">proxies = &#123;</span><br><span class="line">    <span class="string">'http'</span>: <span class="string">'http://127.0.0.1:1080'</span>,</span><br><span class="line">    <span class="string">'https'</span>: <span class="string">'http://127.0.0.1:1080'</span>,</span><br><span class="line">&#125;</span><br><span class="line">requests.get(url=url, headers=headers, timeout=timeout, proxies=proxies)</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/01/12/Requests的基本使用/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Requests</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/01/12/Requests的基本使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-使用Unicode" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/28/使用Unicode/">使用Unicode</a>
+    </h1>
+  
+
+        
+        <a href="/2016/12/28/使用Unicode/" class="archive-article-date">
+  	<time datetime="2016-12-28T10:22:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="什么是Unicode"><a href="#什么是Unicode" class="headerlink" title="什么是Unicode"></a>什么是Unicode</h1><p>在<code>Unicode</code>之前，最早是ASCII编码只能表示128个字符（英文大小写、数字、其它符号）。这显然无法表示世界上所有的文字。于是出现了各种不同的字符编码系统，比如我国的汉字编码GBK。但是这又引入了一个新的问题:<strong>不同的编码系统之间存在冲突。</strong>在不同的编码系统中，相同的编码可能代表不同的意义或者不同的编码代表相同的字符，从而导致不同平台、不同语言之间无法很好地转换。为了解决这个问题，必须为不同的文字分配统一编码，<code>Unicode</code>(Universal Multiple-Octet Coded Character Set)由此诞生。<code>Unicode</code>为每种语言设置了唯一的二进制表示方式，提供了从数字代码到不同语言字符集之间的映射，从而可以满足跨平台、跨语言之间的文本处理要求。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[编码A]--&quot;deocde(A)&quot;--&gt;B[Unicode]</span><br><span class="line">B[Unicode]-.&quot;encode(A)&quot;.-&gt;A[编码A]</span><br><span class="line">B[Unicode]-.&quot;encode(B)&quot;.-&gt;C[编码B]</span><br><span class="line">C[编码B]--&quot;deocde(B)&quot;--&gt;B[Unicode]</span><br></pre></td></tr></table></figure></p>
+<p><code>Unicode</code>编码是确定的，但是在实际传输过程中，由于系统平台的不同以及处于节省空间的目的，实现方式有所差异。<code>Unicode</code>的实现方式成为<code>Unicode</code>转换格式（Unicode Transformation Format），简称<code>UTF</code>，包括UTF-7、UTF-16、UTF-32、UTF-8等，其中比较常见的为<code>UTF-8</code>。<code>UTF-8</code>的特点是对不同范围的字符使用不同长度的编码。其中<code>0x00~0x7F</code>的字符的<code>UTF-8</code>编码与<code>ASCII</code>编码完全相同。<code>UTF-8</code>编码的最大长度是4个字节。<br>Unicod与UTF-8编码的对应关系是，<strong>将Unicode编码（十六进制）的字符串转换为UTF-8字节流（二进制）。</strong>  </p>
+<h2 id="Python中的Unicode"><a href="#Python中的Unicode" class="headerlink" title="Python中的Unicode"></a>Python中的Unicode</h2><p>Python 内建的字符串有两种类型<code>str</code>和<code>Unicode</code>，他们拥有共同的祖先<code>basestring</code>。其中<code>Unicode</code>是<code>Python2.0</code>中 引入的一种新的数据类型，所有的Unicode字符串都是Unicode类型的实例。</p>
+<h1 id="Python中处理中文字符常见错误"><a href="#Python中处理中文字符常见错误" class="headerlink" title="Python中处理中文字符常见错误"></a>Python中处理中文字符常见错误</h1><h2 id="读出文件内容显示乱码。"><a href="#读出文件内容显示乱码。" class="headerlink" title="读出文件内容显示乱码。"></a>读出文件内容显示乱码。</h2><h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test.txt中的内容为 “中文测试”，文件以UTF-8的形式保存。</span></span><br><span class="line"><span class="comment"># python2.7.13</span></span><br><span class="line">&gt;&gt;&gt;<span class="keyword">with</span> open(<span class="string">'test.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">       print(fp.read())</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">涓枃娴嬭瘯</span><br></pre></td></tr></table></figure>
+<h3 id="出错分析"><a href="#出错分析" class="headerlink" title="出错分析"></a>出错分析</h3><p>读入文件test.txt以<code>UTF-8</code>编码形式保存，但是<code>Windows</code>的本地默认编码为<code>CP936</code>，在<code>Windows</code>它被映射为<code>GBK</code>编码，所以当在控制台上直接显示<code>UTF-8</code>字符时，这两种编码并不兼容，以<code>UTF-8</code>形式表示的编码被解释成为其它的符号，因此长生了乱码。</p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>利用Unicode作为中间介质来完成转换。首先需要对读入的字符用UTF-8进行编码，然后使用GBK进行编码。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">with</span> open(<span class="string">'test.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line"><span class="meta">... </span>   print(fp.read().decode(<span class="string">'utf-8'</span>).encode(<span class="string">'gbk'</span>))</span><br><span class="line">...</span><br><span class="line">中文测试</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/12/28/使用Unicode/">展开全文 >></a>
         </p>
       
 
@@ -407,7 +992,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -419,7 +1004,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Vin
+    		&copy; 2019 Vin
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -502,7 +1087,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Atom</a>
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -518,7 +1103,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Atom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">其它</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hive</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spider</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -534,19 +1143,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其它</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -558,11 +1159,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Scrapy</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -570,11 +1171,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Software</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -582,11 +1191,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color4">Software</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,7 +1199,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,6 +1220,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Flask</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ES</a>
               </li>
              
               <li class="article-tag-list-item">

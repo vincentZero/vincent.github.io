@@ -165,282 +165,53 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-正则表达式的使用" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-单例模式" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/28/正则表达式的使用/">正则表达式的使用</a>
+      <a class="article-title" href="/2018/09/04/单例模式/">单例模式</a>
     </h1>
   
 
         
-        <a href="/2017/04/28/正则表达式的使用/" class="archive-article-date">
-  	<time datetime="2017-04-28T12:32:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-28</time>
+        <a href="/2018/09/04/单例模式/" class="archive-article-date">
+  	<time datetime="2018-09-04T06:20:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1><ol>
-<li><a href="http://www.cnblogs.com/zery/p/3438845.html" target="_blank" rel="noopener">读懂正则表达式就这么简单</a></li>
-<li><a href="http://www.runoob.com/regexp/regexp-metachar.html" target="_blank" rel="noopener">正则表达式 - 元字符</a></li>
-</ol>
-<h1 id="正则中的-和"><a href="#正则中的-和" class="headerlink" title="正则中的 ^ 和 $"></a>正则中的 <code>^</code> 和 $</h1><p>使用<code>^</code>和 $ 表示匹配字符串的开头和结尾，常用来检查用户输入是否完全符合期望。如果想要从字符串中匹配子串，则不应该使用<code>^</code>和 $ 。<br><code>re.match</code>起到同样的作用。<code>re.match</code>从字符串开始位置匹配正则表达式，如果开始位置就不符合，那么将返回<code>None</code>。所以在<code>python</code>的使用中<br>可以利用<code>re.match</code>和<code>re.search</code>方法来达到添加与不添加<code>^</code>的效果，一条表达式就能在两种需求里使用。<br>
-        
-          <a class="article-more-a" href="/2017/04/28/正则表达式的使用/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/28/正则表达式的使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用CrawlSpider类" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/27/使用CrawlSpider类/">使用CrawlSpider类</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/27/使用CrawlSpider类/" class="archive-article-date">
-  	<time datetime="2017-04-27T12:12:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CrawlSpider"><a href="#CrawlSpider" class="headerlink" title="CrawlSpider"></a>CrawlSpider</h1><p>爬取一般网站常用的spider。其定义了一些规则(rule)来提供跟进link的方便的机制。</p>
-<h2 id="rules"><a href="#rules" class="headerlink" title="rules"></a>rules</h2><p>一个包含一个(或多个)<a href="#rule对象">Rule</a>对象的集合(list)。 每个 Rule 对爬取网站的动作定义了特定表现。 Rule对象在下边会介绍。 如果多个rule匹配了相同的链接，则根据他们在本属性中被定义的顺序，第一个会被使用。</p>
+        <h1 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h1><p>单例模式(Singleton Pattern)</p>
 <blockquote>
-<p>使用<code>rules</code>之后，不符合链接提取器中所定义的<code>url</code>规则的<code>Request</code>将会被丢弃，哪怕是显式返回一个<code>Request</code>请求。<br>
-        
-          <a class="article-more-a" href="/2017/04/27/使用CrawlSpider类/#more">more >></a>
-        
-      
-
-      
-    </p></blockquote></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Scrapy</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<p>Ensure a class has only one instance, and provide a global point of access to it. （确保某一个类只有一个实例，而且能自行实例化并向整个系统提供这个实例）</p>
+</blockquote>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Singleton</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    最简单的单例模式</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">_A</span><span class="params">(object)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">       真正干活的类, 对外隐藏</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">display</span><span class="params">(self)</span>:</span></span><br><span class="line">            <span class="string">""" 返回当前实例的 ID，是全局唯一的"""</span></span><br><span class="line">            <span class="keyword">return</span> id(self)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 类变量，用于存储 _A 的实例</span></span><br><span class="line">    _instance = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> Singleton._instance <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">            Singleton._instance = Singleton._A()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span><span class="params">(self, attr)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> getattr(self._instance, attr)</span><br></pre></td></tr></table></figure>
+<h2 id="单例模式的优点"><a href="#单例模式的优点" class="headerlink" title="单例模式的优点"></a>单例模式的优点</h2><ul>
+<li>单例模式在内存中只有一个实例，减少了内存的开支。当一个对象需要频繁地创建、销毁，而且创建或销毁时性能无法优化，单例模式的的优势就非常明显。</li>
+<li>单例模式只生成一个实例，减少了系统性能的开销</li>
+<li>单例模式可以避免对资源的多重占用</li>
+<li>单例模式可以在系统设置全局的访问点，优化和共享资源访问</li>
+</ul>
+<h2 id="单例模式的缺点"><a href="#单例模式的缺点" class="headerlink" title="单例模式的缺点"></a>单例模式的缺点</h2><ul>
+<li>单例模式一般没有接口，拓展很困难</li>
+<li>单例模式对测试不利的，如果单例模式没有完成无法进行测试</li>
+<li>单例模式于单一职责原则由冲突</li>
+</ul>
+<h2 id="单例模式的应用场景"><a href="#单例模式的应用场景" class="headerlink" title="单例模式的应用场景"></a>单例模式的应用场景</h2><ul>
+<li>要求生成唯一序列号的环境</li>
+<li>创建一个对象需要消耗的资源过多，如访问IO和数据库</li>
+<li>需要定义大量的静态常量和静态方法</li>
+</ul>
+<h2 id="单例模式的注意事项"><a href="#单例模式的注意事项" class="headerlink" title="单例模式的注意事项"></a>单例模式的注意事项</h2><p>在高并发的情况下，需要注意单例模式的线程同步问题。单例模式在低并发的情况尚且不会出现问题，若系统压力增大，并发量增加时可能在内存中出现多个实例。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 饿汉式单例</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 限制产生多个对象</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton singleton = <span class="keyword">new</span> Singleton();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 通过该方法获得实例对象</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getSingleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//类中的其它方法，尽量是static</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// pass</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/27/使用CrawlSpider类/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
     </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-MongoDB数据库基本操作" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/18/MongoDB数据库基本操作/">MongoDB数据库基本操作</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/18/MongoDB数据库基本操作/" class="archive-article-date">
-  	<time datetime="2017-04-18T06:12:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="0x01-连接mongo"><a href="#0x01-连接mongo" class="headerlink" title="0x01 连接mongo"></a>0x01 连接mongo</h1><p><code>mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]</code></p>
-<h1 id="0x02-创建数据库"><a href="#0x02-创建数据库" class="headerlink" title="0x02 创建数据库"></a>0x02 创建数据库</h1><p><code>use DATABASE_NAME</code> 如果数据库不存在，则创建数据库，否则切换到指定数据库。<br><code>show dbs</code> 显示所有数据库<br><code>db</code> 显示当前所在数据库</p>
-<h1 id="0x03-删除数据库"><a href="#0x03-删除数据库" class="headerlink" title="0x03 删除数据库"></a>0x03 删除数据库</h1><p><code>db.dropDatabase()</code> 删除当前数据库<br><code>db.COLLECTION_NAME.drop()</code> 删除集合</p>
-<h1 id="0x04-插入文档"><a href="#0x04-插入文档" class="headerlink" title="0x04 插入文档"></a>0x04 插入文档</h1><p>文档的数据结构和JSON基本一样。<br>所有存储在集合中的数据都是BSON格式。<br>BSON是一种类json的一种二进制形式的存储格式,简称Binary JSON。<br><code>db.COLLECTION_NAME.insert(document)</code> 向集合中插入文档<br>
-        
-          <a class="article-more-a" href="/2017/04/18/MongoDB数据库基本操作/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/18/MongoDB数据库基本操作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Linux下多版本PYTHON切换" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/28/Linux下多版本PYTHON切换/">Linux下多版本PYTHON切换</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/28/Linux下多版本PYTHON切换/" class="archive-article-date">
-  	<time datetime="2017-03-28T06:32:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="pyenv"><a href="#pyenv" class="headerlink" title="pyenv"></a>pyenv</h2><p>pyenv是一个能简易地在多个Python版本中进行切换的工具，它简单而优雅</p>
-<ul>
-<li>进行全局的Python版本切换</li>
-<li>为单个项目提供对应的Python版本</li>
-<li>只依赖Python本身</li>
-<li>自带virtualenv 能够进行virtualenv管理</li>
-<li>提供下载不同的Python版本和衍生版本
-        
-          <a class="article-more-a" href="/2017/03/28/Linux下多版本PYTHON切换/#more">more >></a>
-        
-      
-
-      
-    </li></ul></div>
     <div class="article-info article-info-index">
       
       
@@ -451,87 +222,9 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/28/Linux下多版本PYTHON切换/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Scrapy-发送-JSON 数据" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/13/Scrapy-发送-JSON 数据/">Scrapy 发送 JSON 数据</a>
-    </h1>
-  
-
-        
-        <a href="/2017/03/13/Scrapy-发送-JSON 数据/" class="archive-article-date">
-  	<time datetime="2017-03-13T13:12:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="如何使用Scrapy发送JSON数据"><a href="#如何使用Scrapy发送JSON数据" class="headerlink" title="如何使用Scrapy发送JSON数据"></a>如何使用Scrapy发送JSON数据</h1><p>在使用scrapy爬取tti网站数据的时候发现，tti的一个接口无法正确地识别发送的数据，后来经过测试发现是发送的数据格式不正确造成的。于是记录下解决这个问题的过程。</p>
-<h2 id="编写测试代码"><a href="#编写测试代码" class="headerlink" title="编写测试代码"></a>编写测试代码</h2><p>一开始查看文档想到使用Form.Request<br>所以是构造一下访问请求<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">process_url = <span class="string">'https://www.ttiinc.com/bin/services/processData?jsonPayloadAvailable=true&amp;osgiService=partsearchpost'</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Host'</span>: <span class="string">'www.ttiinc.com'</span>,</span><br><span class="line">    <span class="string">'Connection'</span>: <span class="string">'keep-alive'</span>,</span><br><span class="line">    <span class="string">'Content-Length'</span>: <span class="string">'108'</span>,</span><br><span class="line">    <span class="string">'Accept'</span>: <span class="string">'application/json, text/plain, */*'</span>,</span><br><span class="line">    <span class="string">'CSRF-Token'</span>: <span class="string">'undefined'</span>,</span><br><span class="line">    <span class="string">'Origin'</span>: <span class="string">'https://www.ttiinc.com'</span>,</span><br><span class="line">    <span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'</span>,</span><br><span class="line">    <span class="string">'Content-Type'</span>: <span class="string">'application/json;charset=UTF-8'</span>,</span><br><span class="line">    <span class="string">'DNT'</span>: <span class="string">'1'</span>,</span><br><span class="line">    <span class="string">'Referer'</span>: <span class="string">'https://www.ttiinc.com/content/ttiinc/en/apps/part-search.html?manufacturers=&amp;searchTerms=&amp;systemsCatalog=254428'</span>,</span><br><span class="line">    <span class="string">'Accept-Encoding'</span>: <span class="string">'gzip, deflate, br'</span>,</span><br><span class="line">    <span class="string">'Accept-Language'</span>: <span class="string">'en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4'</span>,</span><br><span class="line">&#125;</span><br><span class="line">data = &#123;<span class="string">"searchTerms"</span>:<span class="string">""</span>,<span class="string">"systemsCatalog"</span>:<span class="string">"254428"</span>,<span class="string">"inStock"</span>:<span class="string">""</span>,<span class="string">"rohsCompliant"</span>:<span class="string">""</span>,<span class="string">"leadFree"</span>:<span class="string">""</span>,<span class="string">"containsLead"</span>:<span class="string">""</span>&#125;</span><br><span class="line"></span><br><span class="line">FormRequest(url=processData_url, formdata=data, headers=headers)</span><br></pre></td></tr></table></figure></p>
-<p>返回结果为400<br>
-        
-          <a class="article-more-a" href="/2017/03/13/Scrapy-发送-JSON 数据/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Scrapy</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		
 		</ul>
@@ -541,7 +234,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/13/Scrapy-发送-JSON 数据/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/04/单例模式/">展开全文 >></a>
         </p>
       
 
@@ -571,68 +264,115 @@
 
 
   
-    <article id="post-Python项目开发约定" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-Centos-下安装机器学习开发环境(Anaconda)" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/06/Python项目开发约定/">Python开发建议</a>
+      <a class="article-title" href="/2018/07/12/Centos-下安装机器学习开发环境(Anaconda)/">Centos 下安装机器学习开发环境(Anaconda)</a>
     </h1>
   
 
         
-        <a href="/2017/03/06/Python项目开发约定/" class="archive-article-date">
-  	<time datetime="2017-03-06T13:54:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-06</time>
+        <a href="/2018/07/12/Centos-下安装机器学习开发环境(Anaconda)/" class="archive-article-date">
+  	<time datetime="2018-07-12T14:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h1><h2 id="Sublime-Text-3"><a href="#Sublime-Text-3" class="headerlink" title="Sublime Text 3"></a>Sublime Text 3</h2><h3 id="Package-Control-for-Sublime-Text-3"><a href="#Package-Control-for-Sublime-Text-3" class="headerlink" title="Package Control for Sublime Text 3"></a>Package Control for Sublime Text 3</h3><ol>
-<li><code>ctrl + ~</code>打开控制台</li>
-<li>输入以下<code>python</code>代码<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> urllib.request,os,hashlib; h = <span class="string">'df21e130d211cfc94d9b0905775a7c0f'</span> + <span class="string">'1e3d39e33b79698005270310898eea76'</span>; pf = <span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( <span class="string">'http://packagecontrol.io/'</span> + pf.replace(<span class="string">' '</span>, <span class="string">'%20'</span>)).read(); dh = hashlib.sha256(by).hexdigest(); print(<span class="string">'Error validating download (got %s instead of %s), please try manual install'</span> % (dh, h)) <span class="keyword">if</span> dh != h <span class="keyword">else</span> open(os.path.join( ipp, pf), <span class="string">'wb'</span> ).write(by)</span><br></pre></td></tr></table></figure>
+        <h1 id="Centos-版本信息"><a href="#Centos-版本信息" class="headerlink" title="Centos 版本信息"></a>Centos 版本信息</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@iZj6ccrd1enl1tp3uzlj70Z ~]# lsb_release -a</span><br><span class="line">LSB Version:	:core-4.1-amd64:core-4.1-noarch</span><br><span class="line">Distributor ID:	CentOS</span><br><span class="line">Description:	CentOS Linux release 7.4.1708 (Core) </span><br><span class="line">Release:	7.4.1708</span><br><span class="line">Codename:	Core</span><br></pre></td></tr></table></figure>
+<h1 id="安装Anaconda"><a href="#安装Anaconda" class="headerlink" title="安装Anaconda"></a>安装Anaconda</h1><h2 id="下载Linux版本安装包"><a href="#下载Linux版本安装包" class="headerlink" title="下载Linux版本安装包"></a>下载Linux版本安装包</h2><p>前往<a href="https://www.anaconda.com/download/#linux" target="_blank" rel="noopener">Linux版本安装包下载地址</a>下载。可以使用<code>wget</code>工具直接下载。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash Anaconda3-XXX-Linux-x86_64.sh</span><br></pre></td></tr></table></figure>
+<h2 id="安装问题解决"><a href="#安装问题解决" class="headerlink" title="安装问题解决"></a>安装问题解决</h2><ol>
+<li><code>Anaconda3-5.1.0-Linux-x86_64.sh: line 350: bunzip2: command not found</code><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y bzip2</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<blockquote>
-<p>注：无法安装可是因为<code>packagecontrol.io</code>网站被屏蔽，可以使用代理试试。</p>
+<h1 id="第一个机器学习的样例"><a href="#第一个机器学习的样例" class="headerlink" title="第一个机器学习的样例"></a>第一个机器学习的样例</h1><h2 id="获取与处理数据集"><a href="#获取与处理数据集" class="headerlink" title="获取与处理数据集"></a>获取与处理数据集</h2><h3 id="1-下载数据集"><a href="#1-下载数据集" class="headerlink" title="1.下载数据集"></a>1.下载数据集</h3><p><a href="https://github.com/carefree0910/MachineLearning/tree/master/_Data/prices.txt" target="_blank" rel="noopener">斯坦福机器学习课程-预测房价 prices.txt</a><br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/carefree0910/MachineLearning/tree/master/_Data/prices.txt</span><br></pre></td></tr></table></figure></p>
+<h3 id="2-数据标准化"><a href="#2-数据标准化" class="headerlink" title="2.数据标准化"></a>2.数据标准化</h3><p>一般而言，应该对原始数据做一定的处理以期望降低问题的复杂度， 提高模型的收敛速度。这里采用<code>z-score</code>标准化(zero-mean normalization)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X&apos; = \dfrac&#123;(X-\mu)&#125;&#123;\sigma&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中<code>$\mu$</code>表示房子面积的均值， <code>$\sigma$</code>表示<code>X</code>的标准差(standard division)</p>
+<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">机器学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/12/Centos-下安装机器学习开发环境(Anaconda)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-FireFox-设置启用代理服务器" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/12/FireFox-设置启用代理服务器/">FireFox 设置启用代理服务器</a>
+    </h1>
+  
+
+        
+        <a href="/2018/07/12/FireFox-设置启用代理服务器/" class="archive-article-date">
+  	<time datetime="2018-07-12T14:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="keyword">from</span> selenium.webdriver.common.proxy <span class="keyword">import</span> Proxy</span><br><span class="line"></span><br><span class="line">firefox_driver = <span class="string">r'D:\Programs\Python\Python27\selenium\webdriver\firefox\amd64\geckodriver.exe'</span></span><br><span class="line"></span><br><span class="line">proxy_ip = <span class="string">'127.0.0.1'</span></span><br><span class="line">proxy_port = <span class="number">1080</span></span><br><span class="line"></span><br><span class="line">webdriver.DesiredCapabilities.FIREFOX[<span class="string">'proxy'</span>] = &#123;</span><br><span class="line">    <span class="string">"httpProxy"</span>:proxy_ip,</span><br><span class="line">    <span class="string">"httpProxyPort"</span>: proxy_port,</span><br><span class="line">    <span class="string">"sslProxy"</span>:proxy_ip,</span><br><span class="line">    <span class="string">"sslProxyPort"</span>: proxy_port,</span><br><span class="line">    <span class="string">"proxyType"</span>:<span class="string">"manual"</span>,</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">driver = webdriver.Firefox(executable_path=firefox_driver)</span><br></pre></td></tr></table></figure>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><blockquote>
+<p>文档链接 <a href="https://github.com/mozilla/geckodriver" target="_blank" rel="noopener">https://github.com/mozilla/geckodriver</a></p>
 </blockquote>
-<h3 id="WEB-开发系列插件推荐按照"><a href="#WEB-开发系列插件推荐按照" class="headerlink" title="WEB 开发系列插件推荐按照"></a>WEB 开发系列插件推荐按照</h3><table>
-<thead>
-<tr>
-<th style="text-align:center">插件名</th>
-<th style="text-align:left">功能</th>
-<th style="text-align:left">简单描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Emmet</td>
-<td style="text-align:left">HTML、CSS高效编辑插件</td>
-<td style="text-align:left">需要一定的学习成本但是很高效<a href="https://docs.emmet.io/abbreviations/syntax/" target="_blank" rel="noopener">Documentation</a></td>
-</tr>
-<tr>
-<td style="text-align:center">ConverToUTF8</td>
-<td style="text-align:left">解决中文编码乱码问题</td>
-<td style="text-align:left">无</td>
-</tr>
-<tr>
-<td style="text-align:center">HTML/JS/CSS Prettify</td>
-<td style="text-align:left">排版html/css/js</td>
-<td style="text-align:left">快捷键Ctrl+Shift+H美化代码</td>
-</tr>
-<tr>
-<td style="text-align:center">Mardow Preview</td>
-<td style="text-align:left">markdown 文件预览</td>
-<td style="text-align:left">无</td>
-</tr>
-</tbody>
-</table>
-        
-          <a class="article-more-a" href="/2017/03/06/Python项目开发约定/#more">more >></a>
-        
+
       
 
       
@@ -645,7 +385,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spider</a>
         		</li>
       		
 		</ul>
@@ -655,7 +395,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/06/Python项目开发约定/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/07/12/FireFox-设置启用代理服务器/">展开全文 >></a>
         </p>
       
 
@@ -685,185 +425,28 @@
 
 
   
-    <article id="post-使用pip" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-Python-类变量不是线程安全的" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/18/使用pip/">使用pip</a>
+      <a class="article-title" href="/2018/07/08/Python-类变量不是线程安全的/">Python 类变量不是线程安全的</a>
     </h1>
   
 
         
-        <a href="/2017/01/18/使用pip/" class="archive-article-date">
-  	<time datetime="2017-01-18T06:12:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-18</time>
+        <a href="/2018/07/08/Python-类变量不是线程安全的/" class="archive-article-date">
+  	<time datetime="2018-07-08T12:04:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="安装pip"><a href="#安装pip" class="headerlink" title="安装pip"></a>安装<code>pip</code></h1><p>一般情况下 <code>python</code> 自带 <code>pip</code> 包管理工具。如果需要手动按照，将 <code>pip</code> 的源码包解压到 <code>python27/Scripts</code>，并将该路径添加到环境变量。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install python-pip -yq</span><br></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2017/01/18/使用pip/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/18/使用pip/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Requests的基本使用" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/12/Requests的基本使用/">Requests的基本使用</a>
-    </h1>
-  
-
-        
-        <a href="/2017/01/12/Requests的基本使用/" class="archive-article-date">
-  	<time datetime="2017-01-12T00:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="保持请求cookies"><a href="#保持请求cookies" class="headerlink" title="保持请求cookies"></a>保持请求cookies</h1><p><code>session = requests.Session()</code> 使用session请求可以保持请求状态。</p>
-<h1 id="设置请求"><a href="#设置请求" class="headerlink" title="设置请求"></a>设置请求</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">url = <span class="string">"http://test.com"</span></span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">"host"</span>: <span class="string">'test.com'</span>,</span><br><span class="line">    <span class="string">"user-agent"</span>: <span class="string">"requests/python"</span>,</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">timeout=<span class="number">30</span></span><br><span class="line">proxies = &#123;</span><br><span class="line">    <span class="string">'http'</span>: <span class="string">'http://127.0.0.1:1080'</span>,</span><br><span class="line">    <span class="string">'https'</span>: <span class="string">'http://127.0.0.1:1080'</span>,</span><br><span class="line">&#125;</span><br><span class="line">requests.get(url=url, headers=headers, timeout=timeout, proxies=proxies)</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/01/12/Requests的基本使用/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Requests</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/12/Requests的基本使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用Unicode" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/28/使用Unicode/">使用Unicode</a>
-    </h1>
-  
-
-        
-        <a href="/2016/12/28/使用Unicode/" class="archive-article-date">
-  	<time datetime="2016-12-28T10:22:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="什么是Unicode"><a href="#什么是Unicode" class="headerlink" title="什么是Unicode"></a>什么是Unicode</h1><p>在<code>Unicode</code>之前，最早是ASCII编码只能表示128个字符（英文大小写、数字、其它符号）。这显然无法表示世界上所有的文字。于是出现了各种不同的字符编码系统，比如我国的汉字编码GBK。但是这又引入了一个新的问题:<strong>不同的编码系统之间存在冲突。</strong>在不同的编码系统中，相同的编码可能代表不同的意义或者不同的编码代表相同的字符，从而导致不同平台、不同语言之间无法很好地转换。为了解决这个问题，必须为不同的文字分配统一编码，<code>Unicode</code>(Universal Multiple-Octet Coded Character Set)由此诞生。<code>Unicode</code>为每种语言设置了唯一的二进制表示方式，提供了从数字代码到不同语言字符集之间的映射，从而可以满足跨平台、跨语言之间的文本处理要求。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">graph LR</span><br><span class="line">A[编码A]--&quot;deocde(A)&quot;--&gt;B[Unicode]</span><br><span class="line">B[Unicode]-.&quot;encode(A)&quot;.-&gt;A[编码A]</span><br><span class="line">B[Unicode]-.&quot;encode(B)&quot;.-&gt;C[编码B]</span><br><span class="line">C[编码B]--&quot;deocde(B)&quot;--&gt;B[Unicode]</span><br></pre></td></tr></table></figure></p>
-<p><code>Unicode</code>编码是确定的，但是在实际传输过程中，由于系统平台的不同以及处于节省空间的目的，实现方式有所差异。<code>Unicode</code>的实现方式成为<code>Unicode</code>转换格式（Unicode Transformation Format），简称<code>UTF</code>，包括UTF-7、UTF-16、UTF-32、UTF-8等，其中比较常见的为<code>UTF-8</code>。<code>UTF-8</code>的特点是对不同范围的字符使用不同长度的编码。其中<code>0x00~0x7F</code>的字符的<code>UTF-8</code>编码与<code>ASCII</code>编码完全相同。<code>UTF-8</code>编码的最大长度是4个字节。<br>Unicod与UTF-8编码的对应关系是，<strong>将Unicode编码（十六进制）的字符串转换为UTF-8字节流（二进制）。</strong>  </p>
-<h2 id="Python中的Unicode"><a href="#Python中的Unicode" class="headerlink" title="Python中的Unicode"></a>Python中的Unicode</h2><p>Python 内建的字符串有两种类型<code>str</code>和<code>Unicode</code>，他们拥有共同的祖先<code>basestring</code>。其中<code>Unicode</code>是<code>Python2.0</code>中 引入的一种新的数据类型，所有的Unicode字符串都是Unicode类型的实例。</p>
-<h1 id="Python中处理中文字符常见错误"><a href="#Python中处理中文字符常见错误" class="headerlink" title="Python中处理中文字符常见错误"></a>Python中处理中文字符常见错误</h1><h2 id="读出文件内容显示乱码。"><a href="#读出文件内容显示乱码。" class="headerlink" title="读出文件内容显示乱码。"></a>读出文件内容显示乱码。</h2><h3 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test.txt中的内容为 “中文测试”，文件以UTF-8的形式保存。</span></span><br><span class="line"><span class="comment"># python2.7.13</span></span><br><span class="line">&gt;&gt;&gt;<span class="keyword">with</span> open(<span class="string">'test.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">       print(fp.read())</span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line">涓枃娴嬭瘯</span><br></pre></td></tr></table></figure>
-<h3 id="出错分析"><a href="#出错分析" class="headerlink" title="出错分析"></a>出错分析</h3><p>读入文件test.txt以<code>UTF-8</code>编码形式保存，但是<code>Windows</code>的本地默认编码为<code>CP936</code>，在<code>Windows</code>它被映射为<code>GBK</code>编码，所以当在控制台上直接显示<code>UTF-8</code>字符时，这两种编码并不兼容，以<code>UTF-8</code>形式表示的编码被解释成为其它的符号，因此长生了乱码。</p>
-<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><p>利用Unicode作为中间介质来完成转换。首先需要对读入的字符用UTF-8进行编码，然后使用GBK进行编码。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;<span class="keyword">with</span> open(<span class="string">'test.txt'</span>, <span class="string">'r'</span>) <span class="keyword">as</span> fp:</span><br><span class="line"><span class="meta">... </span>   print(fp.read().decode(<span class="string">'utf-8'</span>).encode(<span class="string">'gbk'</span>))</span><br><span class="line">...</span><br><span class="line">中文测试</span><br></pre></td></tr></table></figure></p>
+        <h1 id="证明-Python-类变量不是线程安全的"><a href="#证明-Python-类变量不是线程安全的" class="headerlink" title="证明 Python 类变量不是线程安全的"></a>证明 Python 类变量不是线程安全的</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Foo(object):</span><br><span class="line">    instance_count = 0</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def inc_by(n):</span><br><span class="line">    for i in range(n):</span><br><span class="line">        Foo.instance_count += 1</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">threads = [threading.Thread(target=inc_by, args=(100000,)) for thread_nr in range(100)]</span><br><span class="line">for thread in threads:</span><br><span class="line">    thread.start()</span><br><span class="line">for thread in threads:</span><br><span class="line">    thread.join()</span><br><span class="line"></span><br><span class="line">print(Foo.instance_count)</span><br></pre></td></tr></table></figure>
+<p>多次执行代码发现，结果不唯一。证明Python的类变量并不是线程安全的。</p>
 
       
 
@@ -887,7 +470,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/28/使用Unicode/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/07/08/Python-类变量不是线程安全的/">展开全文 >></a>
         </p>
       
 
@@ -917,32 +500,314 @@
 
 
   
-    <article id="post-Python-101-阅读笔记（二）" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-Hive-一次数据清洗的记录" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/06/Python-101-阅读笔记（二）/">Python 101 阅读笔记（二）</a>
+      <a class="article-title" href="/2018/07/05/Hive-一次数据清洗的记录/">Hive 一次数据清洗的记录</a>
     </h1>
   
 
         
-        <a href="/2016/12/06/Python-101-阅读笔记（二）/" class="archive-article-date">
-  	<time datetime="2016-12-06T14:04:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-06</time>
+        <a href="/2018/07/05/Hive-一次数据清洗的记录/" class="archive-article-date">
+  	<time datetime="2018-07-05T15:12:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第二章-字符串"><a href="#第二章-字符串" class="headerlink" title="第二章 字符串"></a>第二章 字符串</h2><p>Python中有好几种数据类型，主要的有<code>string</code>, <code>integer</code>, <code>list</code>, <code>tuple</code>以及<code>dict</code>。这一章主要是说明字符串型数据类型。</p>
-<h3 id="创建字符串"><a href="#创建字符串" class="headerlink" title="创建字符串"></a>创建字符串</h3><p>创建字符串的方法有三种，使用单引号、双引号和三引号。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">string_single_quotes = <span class="string">'hello world'</span></span><br><span class="line">string_double_quotes = <span class="string">"hello world"</span></span><br><span class="line">string_triple_quotes = <span class="string">"""hello world"""</span></span><br><span class="line"><span class="comment">##下面例子来自python 101</span></span><br><span class="line">my_string = <span class="string">"I'm a Python programmer!"</span></span><br><span class="line">otherString = <span class="string">'The word "python" usually refers to a snake'</span> <span class="number">3</span> tripleString = <span class="string">"""Here's another way to embed "quotes" in a string"""</span></span><br></pre></td></tr></table></figure></p>
-<p>通过上述示例代码，可以看出当我们想要在字符串中使用单引号或者双引号时我们该怎么做。<br>三引号可以保持原内容格式，包括换行和特殊符号等。三引号通常还用在函数开头作为文档字符串来解释函数的功能。</p>
-<p><strong>此外</strong><code>str()</code>方法也可以创建字符串。通常使用来做强制类型转换。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">num = <span class="number">123456</span></span><br><span class="line">mystr = str(num)</span><br><span class="line"><span class="comment">#可以使用type()查看数据类型。</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="引申问题"><a href="#引申问题" class="headerlink" title="引申问题"></a>引申问题</h4><p>Q1 immutable 和 mutable 之间的区别？<br>Q2 字符串编码问题？</p>
-<h3 id="字符串连接"><a href="#字符串连接" class="headerlink" title="字符串连接"></a>字符串连接</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str_one = <span class="string">"hello"</span></span><br><span class="line">str_two = <span class="string">"world"</span></span><br><span class="line">str_hello_world = str_one + <span class="string">" "</span> + str_two</span><br></pre></td></tr></table></figure>
+        <h1 id="HIVE数据清洗需求"><a href="#HIVE数据清洗需求" class="headerlink" title="HIVE数据清洗需求"></a>HIVE数据清洗需求</h1><p>通过自定义简单的数据清洗场景，来练习hive的几个常用内置函数。例如字符串拼接，条件选择，字符串正则替换，数据筛选等。<br>通过脚本生成测试数据集，然后根据需求清洗数据。</p>
+<h1 id="测试数据集的准备"><a href="#测试数据集的准备" class="headerlink" title="测试数据集的准备"></a>测试数据集的准备</h1><h2 id="使用脚本生成数据集"><a href="#使用脚本生成数据集" class="headerlink" title="使用脚本生成数据集"></a>使用脚本生成数据集</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">rm -rf ./data.txt</span><br><span class="line">touch data.txt</span><br><span class="line">delimiter=&apos;,&apos;</span><br><span class="line">for((i=0;i&lt;20000;i++))</span><br><span class="line">do</span><br><span class="line">str1=&apos;name&apos;;</span><br><span class="line">str2=`openssl rand -base64 8`</span><br><span class="line">num1=`echo $RANDOM`</span><br><span class="line">name=$&#123;i&#125;$&#123;delimiter&#125;$&#123;str1&#125;$&#123;i&#125;$&#123;delimiter&#125;$&#123;str2&#125;$&#123;delimiter&#125;$&#123;num1&#125;</span><br><span class="line">echo  $name&gt;&gt;data.txt</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">echo &quot;The data has been generated&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="创建测试表"><a href="#创建测试表" class="headerlink" title="创建测试表"></a>创建测试表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE IF NOT EXISTS userdata(id INT, name STRING, password STRING, salary INT) ROW FORMAT DELIMITED FIELDS TERMINATED BY &apos;,&apos;;</span><br></pre></td></tr></table></figure>
+<h2 id="导入测试数据"><a href="#导入测试数据" class="headerlink" title="导入测试数据"></a>导入测试数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># beeline 连接</span><br><span class="line">beeline&gt; !connect jdbc:hive2://localhost:10000</span><br><span class="line"># 上传数据</span><br><span class="line">LOAD DATA LOCAL INPATH &apos;/root/vin/data.txt&apos; OVERWRITE INTO TABLE userdata;</span><br></pre></td></tr></table></figure>
+<h2 id="数据上传hdfs"><a href="#数据上传hdfs" class="headerlink" title="数据上传hdfs"></a>数据上传hdfs</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hdfs dfs -put &lt;local path&gt; &lt;remote path&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="定义数据场景"><a href="#定义数据场景" class="headerlink" title="定义数据场景"></a>定义数据场景</h1><ol>
+<li>数据清除<br> 去除用户名为3结尾的用户数据</li>
+<li>数据修改<ul>
+<li>将用户薪水转为美金结算</li>
+<li>将用户名密码中包含的数字替换为$符号</li>
+<li>当用户薪水大于20000时，添加用户名前缀tuhao_</li>
+</ul>
+</li>
+<li>数据增量<ul>
+<li>拆分用户密码前4个字符作为新字段group</li>
+<li>将用户名和密码合并为登陆字串login</li>
+</ul>
+</li>
+</ol>
+<h2 id="数据操作记录"><a href="#数据操作记录" class="headerlink" title="数据操作记录"></a>数据操作记录</h2><h3 id="1-数据清洗HQL"><a href="#1-数据清洗HQL" class="headerlink" title="1. 数据清洗HQL"></a>1. 数据清洗HQL</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE userdata_etl AS </span><br><span class="line">SELECT id, </span><br><span class="line">CASE WHEN salary &gt; 20000 THEN concat(&quot;tuhao_&quot;, name) ELSE name END AS new_name, </span><br><span class="line">regexp_replace(password, &apos;\\d&apos;, &apos;\\$&apos;) AS safe_pass, </span><br><span class="line">salary*6.64 AS usd_salary,</span><br><span class="line">substr(password, 1, 4) AS user_group,</span><br><span class="line">concat(&quot;&#123;login:&quot;, name, &quot;,password:&quot;, password, &quot;&#125;&quot;) AS login_string</span><br><span class="line">FROM workspace.userdata</span><br><span class="line">WHERE name NOT LIKE &quot;%3&quot;;</span><br></pre></td></tr></table></figure>
+<h3 id="2-解决问题"><a href="#2-解决问题" class="headerlink" title="2. 解决问题"></a>2. 解决问题</h3><p>在执行上述HQL语句时，曾出现以下错误<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error while processing statement: FAILED: Execution Error, return code 2 from org.apache.hadoop.hive.ql.exec.mr.MapRedTask (state=08S01,code=2)</span><br></pre></td></tr></table></figure></p>
+<p>通过独立测试发现时正则替换时发生的错误，在修改之前我的正则替换语句如下<code>regexp_replace(password, &#39;\d&#39;, &#39;$&#39;)</code>，后来发现<code>$</code>应该是不能被直接作为替换字符的，需要转义，同时发现<code>\d</code>也无法直接匹配的数字。通过查阅资料了解到正确的写法应该如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select regexp_replace(password, &apos;\\d&apos;, &apos;\\$&apos;) from userdata;</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hive</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/07/05/Hive-一次数据清洗的记录/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Pyspider-分布式部署" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/15/Pyspider-分布式部署/">Pyspider 分布式部署</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/15/Pyspider-分布式部署/" class="archive-article-date">
+  	<time datetime="2018-06-15T09:43:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Pyspider分布式"><a href="#Pyspider分布式" class="headerlink" title="Pyspider分布式"></a>Pyspider分布式</h1><p>Pyspider有丰富的组件而且每个组件可以独立分布式运行。接下来我们使用MySQL和redis去部署一个分布式的爬虫集群。</p>
+<p>在开发环境中部署pyspider时，让每个组件在独立进程启动，并且将数据存储在数据库中可以让整个爬虫更加的可靠和弹性。我们使用screen去维护进程。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>将pyspider的组件都部署在独立的进程中，我们需要先部署好数据库服务。pyspider目前支持MySQL、MongoDB和PostgreSQL。</p>
+<p>此外我们还需要一个消息队列来帮助各部分组件通信。我们可以选择RabbitMQ、Beanstalk或者Redis。</p>
+<p>部署环境示例使用mysql和redis演示。</p>
+<h1 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h1><p>操作系统使用Ubuntu</p>
+<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><ol>
+<li><p>开发环境依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Ubuntu</span><br><span class="line">apt-get install python python-dev python-distribute python-pip libcurl4-openssl-dev libxml2-dev libxslt1-dev python-lxml</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装pyspider</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyspider</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装phantomjs</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 官网下载编译好的phantomjs</span><br><span class="line">wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2</span><br><span class="line"># 解压添加路径到环境变量就可以使用了</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+        
+          <a class="article-more-a" href="/2018/06/15/Pyspider-分布式部署/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Pyspider</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">分布式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/15/Pyspider-分布式部署/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Hadoop-单机模式、伪分布式和完全分布式模式" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/25/Hadoop-单机模式、伪分布式和完全分布式模式/">Hadoop 单机模式、伪分布式和完全分布式模式</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/25/Hadoop-单机模式、伪分布式和完全分布式模式/" class="archive-article-date">
+  	<time datetime="2018-05-25T07:37:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Hadoop-的部署模式"><a href="#Hadoop-的部署模式" class="headerlink" title="Hadoop 的部署模式"></a>Hadoop 的部署模式</h1><h2 id="单机模式"><a href="#单机模式" class="headerlink" title="单机模式"></a>单机模式</h2><p>这种模式在一台单机上运行，没有分布式文件系统，而是直接读写本地操作系统的文件系统。</p>
+<h2 id="伪分布式"><a href="#伪分布式" class="headerlink" title="伪分布式"></a>伪分布式</h2><p>这种模式也是在一台单机上运行，但用不同的Java进程模仿分布式运行中的各类结点(NameNode,DataNode,JobTracker,TaskTracker,SecondaryNameNode)请注意分布式运行中的这几个结点的区别：</p>
+<ol>
+<li>从分布式存储的角度来说，集群中的结点由一个NameNode和若干个DataNode组成,另有一个SecondaryNameNode作为NameNode的备份。</li>
+<li>从分布式应用的角度来说，集群中的结点由一个JobTracker和若干个TaskTracker组成，JobTracker负责任务的调度，TaskTracker负责并行执行任务。TaskTracker必须运行在DataNode上，这样便于数据的本地计算。JobTracker和NameNode则无须在同一台机器上。一个机器上，既当namenode，又当datanode,或者说 既 是jobtracker,又是tasktracker。没有所谓的在多台机器上进行真正的分布式计算，故称为”伪分布式”。</li>
+</ol>
+<h2 id="完全分布式模式"><a href="#完全分布式模式" class="headerlink" title="完全分布式模式"></a>完全分布式模式</h2><p>真正的分布式，由3个及以上的实体机或者虚拟机组件的机群。</p>
+<h1 id="Hadoop框架"><a href="#Hadoop框架" class="headerlink" title="Hadoop框架"></a>Hadoop框架</h1><h2 id="MapReduce-分布式计算框架"><a href="#MapReduce-分布式计算框架" class="headerlink" title="MapReduce 分布式计算框架"></a>MapReduce 分布式计算框架</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">graph TB</span><br><span class="line">DT[Master-Slaver 模式]</span><br><span class="line">C1[Client] --&gt; A</span><br><span class="line">A((Job Tracker)) --&gt; |Heart Beat|D[Task Tracker A]</span><br><span class="line">A --&gt; |Heart Beat|C[Task Tracker B]</span><br><span class="line">A --&gt; |Heart Beat|E[Task Tracker C]</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2018/05/25/Hadoop-单机模式、伪分布式和完全分布式模式/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Hadoop</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/25/Hadoop-单机模式、伪分布式和完全分布式模式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-回溯与生成器的结合使用" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/12/回溯与生成器的结合使用/">回溯与生成器的结合使用</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/12/回溯与生成器的结合使用/" class="archive-article-date">
+  	<time datetime="2017-09-12T10:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h1><p>回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”。许多复杂的，规模较大的问题都可以使用回溯法，有“通用解题方法”的美称。</p>
+<p><strong>感觉类似走迷宫</strong></p>
+<h1 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h1><p>八皇后问题（回溯算法的典型案例）在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。</p>
+<h2 id="问题分析和严格化"><a href="#问题分析和严格化" class="headerlink" title="问题分析和严格化"></a>问题分析和严格化</h2><ol>
+<li>抽象表示问题主体，如何表示一个可能的解决方案？<br>可以使用的方式很多，在思考的过程中需要决定出一种简洁而且有效的数据结构去表示八皇后的状态。这里我们决定使用元组，元素的索引值表示所在的列，元素的值表示所在的行。这样我们就可以使用一个包含8个元素（8皇后的位置信息）的元组表示一种答案。</li>
+<li>问题的严格描述<br>不处于同一行、同一列或同一斜线的严格数学表示是什么？设已确定的皇后位置坐标为(Rn, Cn), 待确定的皇后坐标为(R, C)。 不在同一行等同于 R != Rn， 不在同一列等同于 C != Cn， 不在同一斜线等同于 |R-Rn| != |C-Cn|<br>可以使用编码描述冲突的条件。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义函数解决八皇后位置冲突判断</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conflict</span><span class="params">(state, next_x)</span>:</span></span><br><span class="line">    next_y = len(state)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(next_y):</span><br><span class="line">        <span class="comment"># 如果水平距离为0（列相同）或者等于垂直距离（在一条斜线上），意味这位置冲突了。</span></span><br><span class="line">        <span class="keyword">if</span> abs(state[i] - next_x) <span class="keyword">in</span> (<span class="number">0</span>, next_y - i):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2><h3 id="递归回溯"><a href="#递归回溯" class="headerlink" title="递归回溯"></a>递归回溯</h3><p>递归回溯先确定好退出条件，然后不符合退出条件的回溯，使用if-else分支。这里八皇后的退出条件应该是这样的，最后一个皇后，要根据之前的皇后位置判断出最后一个皇后的位置然后返回位置。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">queens</span><span class="params">(num, state)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(state) == num - <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">for</span> pos <span class="keyword">in</span> range(num):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> conflict(state, pos):</span><br><span class="line">                <span class="keyword">yield</span> pos</span><br></pre></td></tr></table></figure></p>
+<p>需要递归的部分，递归函数就是不处于退出条件时执行的操作，将不冲突的点添加到八皇后的状态里<code>state + (pos, )</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">queens</span><span class="params">(num=<span class="number">8</span>, state=<span class="params">()</span>)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> pos <span class="keyword">in</span> range(num):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> conflict(state, pos):</span><br><span class="line">            <span class="keyword">if</span> len(state) == num - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">yield</span> (pos,)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">for</span> result <span class="keyword">in</span> queens(num, state + (pos,)):</span><br><span class="line">                    <span class="keyword">yield</span> (pos,) + result</span><br></pre></td></tr></table></figure></p>
 
       
 
@@ -960,7 +825,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">阅读</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
@@ -970,7 +835,180 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/06/Python-101-阅读笔记（二）/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/09/12/回溯与生成器的结合使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-观察模式" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/23/观察模式/">观察者模式</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/23/观察模式/" class="archive-article-date">
+  	<time datetime="2017-08-23T14:28:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="面向过程的思路"><a href="#面向过程的思路" class="headerlink" title="面向过程的思路"></a>面向过程的思路</h1><p>创建被观察者对象和观察者对象，创建一个后台线程一直处于运行状态，一旦发现被观察者活动就触发观察者事件。这是真实世界的面向过程思维，功能可以实现，但是效率低下。后台的死循环监听线程会导致cpu飙升，另外不利于添加监听事件，不利于添加新的观察者。<br>在面向对象编程中使用类聚集的方式主动通知，实现观察者和被观察者的关系。将观察者聚类到被观察的类之中，让被观察者在状态变化后可以通知所有的观察者。</p>
+<h1 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h1><h2 id="观察者模式的定义"><a href="#观察者模式的定义" class="headerlink" title="观察者模式的定义"></a>观察者模式的定义</h2><p>观察者模式(Observer Pattern)，也叫订阅发布模式(Publish/Subscribe)。定义对象间一种一对多的依赖关系，使得每当一个对象改变状态，则所有依赖于它的对象都会得到通知并自动更新。<br>
+        
+          <a class="article-more-a" href="/2017/08/23/观察模式/#more">more >></a>
+        
+      
+
+      
+    </p></div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/23/观察模式/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Chrome-headless" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/02/Chrome-headless/">Chrome headless</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/02/Chrome-headless/" class="archive-article-date">
+  	<time datetime="2017-08-02T06:32:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="关于Chrome-headless"><a href="#关于Chrome-headless" class="headerlink" title="关于Chrome headless"></a>关于Chrome headless</h2><p>前几天我注意到Chrome发布了一个新特性-headless。Chrome headless跟普通的chrome浏览器一样，只不过没有浏览器界面，那么机器“浏览”网页就显得更加的自然，可以直接在Linux系统上使用chrome 的 headless 版本进行自动化测试。</p>
+<h2 id="下载webdriver"><a href="#下载webdriver" class="headerlink" title="下载webdriver"></a>下载webdriver</h2><ul>
+<li><p><a href="https://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">chromedriver</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 可以使用一下代码快速获取最新的chromedriver</span><br><span class="line"><span class="meta">#</span> platform options: linux32, linux64, mac64, win32</span><br><span class="line">PLATFORM=linux64</span><br><span class="line">VERSION=$(curl http://chromedriver.storage.googleapis.com/LATEST_RELEASE)</span><br><span class="line">curl http://chromedriver.storage.googleapis.com/$VERSION/chromedriver_$PLATFORM.zip | bsdtar -xvf - -C env/bin/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="noopener">geckodriver - firefox</a></p>
+</li>
+<li><a href="http://selenium-release.storage.googleapis.com/index.html" target="_blank" rel="noopener">iedriver</a></li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/08/02/Chrome-headless/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/02/Chrome-headless/">展开全文 >></a>
         </p>
       
 
@@ -1002,7 +1040,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1014,7 +1052,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Vin
+    		&copy; 2019 Vin
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1097,7 +1135,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Atom</a>
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1113,7 +1151,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Atom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">其它</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hive</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spider</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1129,19 +1191,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其它</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1153,11 +1207,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Scrapy</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1165,11 +1219,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Software</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1177,11 +1239,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color4">Software</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1189,7 +1247,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1202,6 +1268,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Flask</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ES</a>
               </li>
              
               <li class="article-tag-list-item">

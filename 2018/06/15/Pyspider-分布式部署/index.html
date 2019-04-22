@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://www.vins.site">
   <title>Pyspider 分布式部署 | Vincent&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[TOC] Pyspider分布式Pyspider有丰富的组件而且每个组件可以独立分布式运行。接下来我们使用MySQL和redis去部署一个分布式的爬虫集群。 在开发环境中部署pyspider时，让每个组件在独立进程启动，并且将数据存储在数据库中可以让整个爬虫更加的可靠和弹性。我们使用screen去维护进程。 安装将pyspider的组件都部署在独立的进程中，我们需要先部署好数据库服务。pyspi">
+  <meta name="description" content="Pyspider分布式Pyspider有丰富的组件而且每个组件可以独立分布式运行。接下来我们使用MySQL和redis去部署一个分布式的爬虫集群。 在开发环境中部署pyspider时，让每个组件在独立进程启动，并且将数据存储在数据库中可以让整个爬虫更加的可靠和弹性。我们使用screen去维护进程。 安装将pyspider的组件都部署在独立的进程中，我们需要先部署好数据库服务。pyspider目前支">
 <meta name="keywords" content="Python,Pyspider,分布式">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Pyspider 分布式部署">
 <meta property="og:url" content="http://www.vins.site/2018/06/15/Pyspider-分布式部署/index.html">
 <meta property="og:site_name" content="Vincent&#39;s blog">
-<meta property="og:description" content="[TOC] Pyspider分布式Pyspider有丰富的组件而且每个组件可以独立分布式运行。接下来我们使用MySQL和redis去部署一个分布式的爬虫集群。 在开发环境中部署pyspider时，让每个组件在独立进程启动，并且将数据存储在数据库中可以让整个爬虫更加的可靠和弹性。我们使用screen去维护进程。 安装将pyspider的组件都部署在独立的进程中，我们需要先部署好数据库服务。pyspi">
+<meta property="og:description" content="Pyspider分布式Pyspider有丰富的组件而且每个组件可以独立分布式运行。接下来我们使用MySQL和redis去部署一个分布式的爬虫集群。 在开发环境中部署pyspider时，让每个组件在独立进程启动，并且将数据存储在数据库中可以让整个爬虫更加的可靠和弹性。我们使用screen去维护进程。 安装将pyspider的组件都部署在独立的进程中，我们需要先部署好数据库服务。pyspider目前支">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-12-18T05:55:20.525Z">
+<meta property="og:updated_time" content="2019-04-22T17:11:39.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Pyspider 分布式部署">
-<meta name="twitter:description" content="[TOC] Pyspider分布式Pyspider有丰富的组件而且每个组件可以独立分布式运行。接下来我们使用MySQL和redis去部署一个分布式的爬虫集群。 在开发环境中部署pyspider时，让每个组件在独立进程启动，并且将数据存储在数据库中可以让整个爬虫更加的可靠和弹性。我们使用screen去维护进程。 安装将pyspider的组件都部署在独立的进程中，我们需要先部署好数据库服务。pyspi">
+<meta name="twitter:description" content="Pyspider分布式Pyspider有丰富的组件而且每个组件可以独立分布式运行。接下来我们使用MySQL和redis去部署一个分布式的爬虫集群。 在开发环境中部署pyspider时，让每个组件在独立进程启动，并且将数据存储在数据库中可以让整个爬虫更加的可靠和弹性。我们使用screen去维护进程。 安装将pyspider的组件都部署在独立的进程中，我们需要先部署好数据库服务。pyspider目前支">
   
     <link rel="alternative" href="/atom.xml" title="Vincent&#39;s blog" type="application/atom+xml">
   
@@ -185,8 +185,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[TOC]</p>
-<h1 id="Pyspider分布式"><a href="#Pyspider分布式" class="headerlink" title="Pyspider分布式"></a>Pyspider分布式</h1><p>Pyspider有丰富的组件而且每个组件可以独立分布式运行。接下来我们使用MySQL和redis去部署一个分布式的爬虫集群。</p>
+        <h1 id="Pyspider分布式"><a href="#Pyspider分布式" class="headerlink" title="Pyspider分布式"></a>Pyspider分布式</h1><p>Pyspider有丰富的组件而且每个组件可以独立分布式运行。接下来我们使用MySQL和redis去部署一个分布式的爬虫集群。</p>
 <p>在开发环境中部署pyspider时，让每个组件在独立进程启动，并且将数据存储在数据库中可以让整个爬虫更加的可靠和弹性。我们使用screen去维护进程。</p>
 <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>将pyspider的组件都部署在独立的进程中，我们需要先部署好数据库服务。pyspider目前支持MySQL、MongoDB和PostgreSQL。</p>
 <p>此外我们还需要一个消息队列来帮助各部分组件通信。我们可以选择RabbitMQ、Beanstalk或者Redis。</p>
@@ -391,9 +390,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/07/05/Hive-一次数据清洗的记录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Hive 一次数据清洗的记录
+        
+      </div>
+    </a>
   
-    <a href="/2017/09/12/回溯与生成器的结合使用/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">回溯与生成器的结合使用</div>
+  
+    <a href="/2018/05/25/Hadoop-单机模式、伪分布式和完全分布式模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hadoop 单机模式、伪分布式和完全分布式模式</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -436,7 +444,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Vin
+    		&copy; 2019 Vin
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -519,7 +527,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Atom</a>
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -535,7 +543,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Atom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">其它</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hive</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spider</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,19 +583,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其它</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,11 +599,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Scrapy</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -587,11 +611,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Software</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -599,11 +631,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color4">Software</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,7 +639,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -624,6 +660,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Flask</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ES</a>
               </li>
              
               <li class="article-tag-list-item">

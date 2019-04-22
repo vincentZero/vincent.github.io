@@ -165,46 +165,50 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Pyspider-分布式部署" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-UbuntuOnWin10-安装Mysql" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/15/Pyspider-分布式部署/">Pyspider 分布式部署</a>
+      <a class="article-title" href="/2019/06/03/UbuntuOnWin10-安装Mysql/">UbuntuOnWin10 安装Mysql</a>
     </h1>
   
 
         
-        <a href="/2018/06/15/Pyspider-分布式部署/" class="archive-article-date">
-  	<time datetime="2018-06-15T09:43:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-15</time>
+        <a href="/2019/06/03/UbuntuOnWin10-安装Mysql/" class="archive-article-date">
+  	<time datetime="2019-06-03T02:43:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-03</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[TOC]</p>
-<h1 id="Pyspider分布式"><a href="#Pyspider分布式" class="headerlink" title="Pyspider分布式"></a>Pyspider分布式</h1><p>Pyspider有丰富的组件而且每个组件可以独立分布式运行。接下来我们使用MySQL和redis去部署一个分布式的爬虫集群。</p>
-<p>在开发环境中部署pyspider时，让每个组件在独立进程启动，并且将数据存储在数据库中可以让整个爬虫更加的可靠和弹性。我们使用screen去维护进程。</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>将pyspider的组件都部署在独立的进程中，我们需要先部署好数据库服务。pyspider目前支持MySQL、MongoDB和PostgreSQL。</p>
-<p>此外我们还需要一个消息队列来帮助各部分组件通信。我们可以选择RabbitMQ、Beanstalk或者Redis。</p>
-<p>部署环境示例使用mysql和redis演示。</p>
-<h1 id="部署环境"><a href="#部署环境" class="headerlink" title="部署环境"></a>部署环境</h1><p>操作系统使用Ubuntu</p>
-<h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><ol>
-<li><p>开发环境依赖</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># Ubuntu</span><br><span class="line">apt-get install python python-dev python-distribute python-pip libcurl4-openssl-dev libxml2-dev libxslt1-dev python-lxml</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装pyspider</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pyspider</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装phantomjs</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># 官网下载编译好的phantomjs</span><br><span class="line">wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2</span><br><span class="line"># 解压添加路径到环境变量就可以使用了</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+        <h1 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h1><table>
+<thead>
+<tr>
+<th>环境</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ubuntu 18.04 on windows 10</td>
+<td>Win10子系统</td>
+</tr>
+<tr>
+<td>Mysql  5.7.21</td>
+<td><a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener">Mysql的在线文档</a></td>
+</tr>
+</tbody>
+</table>
+<h1 id="安装Mysql"><a href="#安装Mysql" class="headerlink" title="安装Mysql"></a>安装Mysql</h1><h2 id="Installing-MySQL-with-APT"><a href="#Installing-MySQL-with-APT" class="headerlink" title="Installing MySQL with APT"></a>Installing MySQL with APT</h2><p><code>shell&gt; sudo apt-get install mysql-server</code></p>
+<h2 id="Reset-root’s-password"><a href="#Reset-root’s-password" class="headerlink" title="Reset root’s password"></a>Reset root’s password</h2><h3 id="1-use-SET-PASSWORD"><a href="#1-use-SET-PASSWORD" class="headerlink" title="1. use SET PASSWORD"></a>1. use <code>SET PASSWORD</code></h3><p><code>SET PASSWORD FOR &#39;root&#39;@&#39;localhost&#39; = PASSWORD(&#39;newpassword&#39;);</code></p>
+<h3 id="2-use-mysqladmin"><a href="#2-use-mysqladmin" class="headerlink" title="2. use mysqladmin"></a>2. use <code>mysqladmin</code></h3><p><code>mysqladmin -u root password &quot;newpass&quot;</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># mysql root用户修改密码</span><br><span class="line">mysqladmin --user=root --password=12345 password &quot;gue55me&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="3-if-you-forgot-the-old-password"><a href="#3-if-you-forgot-the-old-password" class="headerlink" title="3. if you forgot the old password"></a>3. if you forgot the old password</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt; sudo service mysql stop</span><br><span class="line">&gt; mysqld_safe --skip-grant-tables --skip-networking</span><br><span class="line">&gt; mysql -u root mysql</span><br><span class="line">mysql&gt; UPDATE mysql.user</span><br><span class="line">    SET authentication_string = PASSWORD(&apos;MyNewPass&apos;), password_expired = &apos;N&apos;</span><br><span class="line">    WHERE User = &apos;root&apos; AND Host = &apos;localhost&apos;;</span><br><span class="line">    FLUSH PRIVILEGES;</span><br><span class="line">    exit;</span><br><span class="line"># 查看参考[4]获得更详细的说明</span><br></pre></td></tr></table></figure>
         
-          <a class="article-more-a" href="/2018/06/15/Pyspider-分布式部署/#more">more >></a>
+          <a class="article-more-a" href="/2019/06/03/UbuntuOnWin10-安装Mysql/#more">more >></a>
         
       
 
@@ -218,15 +222,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Pyspider</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">分布式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
         		</li>
       		
 		</ul>
@@ -236,7 +232,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/15/Pyspider-分布式部署/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/06/03/UbuntuOnWin10-安装Mysql/">展开全文 >></a>
         </p>
       
 
@@ -266,36 +262,743 @@
 
 
   
-    <article id="post-回溯与生成器的结合使用" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-Hive-数据写入ES实践" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/12/回溯与生成器的结合使用/">回溯与生成器的结合使用</a>
+      <a class="article-title" href="/2019/04/10/Hive-数据写入ES实践/">Hive 数据写入ES实践</a>
     </h1>
   
 
         
-        <a href="/2017/09/12/回溯与生成器的结合使用/" class="archive-article-date">
-  	<time datetime="2017-09-12T10:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-12</time>
+        <a href="/2019/04/10/Hive-数据写入ES实践/" class="archive-article-date">
+  	<time datetime="2019-04-10T07:02:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h1><p>回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。回溯法是一种选优搜索法，按选优条件向前搜索，以达到目标。但当探索到某一步时，发现原先选择并不优或达不到目标，就退回一步重新选择，这种走不通就退回再走的技术为回溯法，而满足回溯条件的某个状态的点称为“回溯点”。许多复杂的，规模较大的问题都可以使用回溯法，有“通用解题方法”的美称。</p>
-<p><strong>感觉类似走迷宫</strong></p>
-<h1 id="八皇后问题"><a href="#八皇后问题" class="headerlink" title="八皇后问题"></a>八皇后问题</h1><p>八皇后问题（回溯算法的典型案例）在8×8格的国际象棋上摆放八个皇后，使其不能互相攻击，即任意两个皇后都不能处于同一行、同一列或同一斜线上，问有多少种摆法。</p>
-<h2 id="问题分析和严格化"><a href="#问题分析和严格化" class="headerlink" title="问题分析和严格化"></a>问题分析和严格化</h2><ol>
-<li>抽象表示问题主体，如何表示一个可能的解决方案？<br>可以使用的方式很多，在思考的过程中需要决定出一种简洁而且有效的数据结构去表示八皇后的状态。这里我们决定使用元组，元素的索引值表示所在的列，元素的值表示所在的行。这样我们就可以使用一个包含8个元素（8皇后的位置信息）的元组表示一种答案。</li>
-<li>问题的严格描述<br>不处于同一行、同一列或同一斜线的严格数学表示是什么？设已确定的皇后位置坐标为(Rn, Cn), 待确定的皇后坐标为(R, C)。 不在同一行等同于 R != Rn， 不在同一列等同于 C != Cn， 不在同一斜线等同于 |R-Rn| != |C-Cn|<br>可以使用编码描述冲突的条件。<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义函数解决八皇后位置冲突判断</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conflict</span><span class="params">(state, next_x)</span>:</span></span><br><span class="line">    next_y = len(state)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(next_y):</span><br><span class="line">        <span class="comment"># 如果水平距离为0（列相同）或者等于垂直距离（在一条斜线上），意味这位置冲突了。</span></span><br><span class="line">        <span class="keyword">if</span> abs(state[i] - next_x) <span class="keyword">in</span> (<span class="number">0</span>, next_y - i):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+        <h1 id="部署测试环境"><a href="#部署测试环境" class="headerlink" title="部署测试环境"></a>部署测试环境</h1><h2 id="Hive环境部署"><a href="#Hive环境部署" class="headerlink" title="Hive环境部署"></a>Hive环境部署</h2><p>Hive 部署在本地docker<br><code>sudo docker run -d --name hadoop-master -P -h hadoop-master teradatalabs/cdh5-hive</code></p>
+<h3 id="Beeline连接Hive进行测试"><a href="#Beeline连接Hive进行测试" class="headerlink" title="Beeline连接Hive进行测试"></a>Beeline连接Hive进行测试</h3><ul>
+<li><p>beeline连接成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># hive --service beeline</span><br><span class="line">Beeline version 1.1.0-cdh5.9.1 by Apache Hive</span><br><span class="line">beeline&gt; !connect jdbc:hive2://localhost:10000</span><br><span class="line">scan complete in 3ms</span><br><span class="line">Connecting to jdbc:hive2://localhost:10000</span><br><span class="line">Enter username for jdbc:hive2://localhost:10000: </span><br><span class="line">Enter password for jdbc:hive2://localhost:10000: </span><br><span class="line">Connected to: Apache Hive (version 1.1.0-cdh5.9.1)</span><br><span class="line">Driver: Hive JDBC (version 1.1.0-cdh5.9.1)</span><br><span class="line">Transaction isolation: TRANSACTION_REPEATABLE_READ</span><br><span class="line">0: jdbc:hive2://localhost:10000&gt;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>连接成功后，操作ES数据需要添加驱动<br>驱动下载<a href="http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop/6.3.2/elasticsearch-hadoop-6.3.2.jar" target="_blank" rel="noopener">elasticsearch-hadoop-6.3.2.jar</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0: jdbc:hive2://localhost:10000&gt; ADD JAR /home/iteblog/elasticsearch-hadoop-6.3.2.jar;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>参考<a href="https://blog.csdn.net/qianshangding0708/article/details/50381966" target="_blank" rel="noopener">Hive 如何添加第三方JAR</a></p>
+<h2 id="ES环境部署"><a href="#ES环境部署" class="headerlink" title="ES环境部署"></a>ES环境部署</h2><p>ES 部署在阿里云主机 <code>47.106.151.207</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># ES</span><br><span class="line">docker run -d --name es -p 9200:9200 -p 9300:9300 -e &quot;discovery.type=single-node&quot; docker.elastic.co/elasticsearch/elasticsearch:6.3.2</span><br><span class="line"># ES的Web控制台</span><br><span class="line">docker run -d --name es_admin -p 9100:9100 mobz/elasticsearch-head:5</span><br></pre></td></tr></table></figure></p>
+<h3 id="ES环境部署踩坑指南"><a href="#ES环境部署踩坑指南" class="headerlink" title="ES环境部署踩坑指南"></a>ES环境部署踩坑指南</h3><ul>
+<li><p>单点部署配置文件 elasticsearch.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cluster.name: &quot;docker-cluster&quot;</span><br><span class="line">network.host: 0.0.0.0</span><br><span class="line">http.cors.enabled: true</span><br><span class="line">http.cors.allow-origin: &quot;*&quot;</span><br><span class="line"># minimum_master_nodes need to be explicitly set when bound on a public IP</span><br><span class="line"># set to 1 to allow single node clusters</span><br><span class="line"># Details: https://github.com/elastic/elasticsearch/pull/17288</span><br><span class="line">discovery.zen.minimum_master_nodes: 1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ES-Head 无法新建索引<br>通过网络查看，发现是 <code>{&quot;error&quot;:&quot;Content-Type header [application/x-www-form-urlencoded] is not supported&quot;,&quot;status&quot;:406}</code><br><a href="https://blog.csdn.net/qq_41109145/article/details/82588538" target="_blank" rel="noopener">详细解决方法</a></p>
+</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/04/10/Hive-数据写入ES实践/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hive</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">ES</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/10/Hive-数据写入ES实践/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Requests-POST-多个分块编码的文件" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/22/Requests-POST-多个分块编码的文件/">Requests POST 多个分块编码的文件</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/22/Requests-POST-多个分块编码的文件/" class="archive-article-date">
+  	<time datetime="2019-03-22T12:25:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="源问题"><a href="#源问题" class="headerlink" title="源问题"></a>源问题</h1><blockquote>
+<p>在壁虎报价网站上上传和下载Excel文件？</p>
+</blockquote>
+<h1 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h1><p>利用Requests中定义的files上传接口进行文件上传</p>
+<h1 id="分段标题"><a href="#分段标题" class="headerlink" title="分段标题"></a>分段标题</h1><h2 id="0x01-示例代码"><a href="#0x01-示例代码" class="headerlink" title="0x01 示例代码"></a>0x01 示例代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line">class BatchRenewal(object):</span><br><span class="line">    api_login = &apos;http://bao.91bihu.com/&apos;</span><br><span class="line">    api_logout = &apos;&apos;</span><br><span class="line">    api_upload = &#123;</span><br><span class="line">        &apos;gx&apos;: &apos;http://bao.91bihu.com/BatchRenewal/BatchRenewal?cityId=117&amp;renewalCarType=0&amp;timeSetting=8:00-22:30&amp;ChannelType=1&amp;SelectedSources=1,2,8,4&amp;IsHistoryRenewal=0&amp;batchRenewalType=0&amp;IsCoverSalesman=0&apos;,</span><br><span class="line">        &apos;sx&apos;: &apos;http://bao.91bihu.com/BatchRenewal/BatchRenewal?cityId=64&amp;renewalCarType=0&amp;timeSetting=8:00-22:30&amp;ChannelType=1&amp;SelectedSources=1,2,7,4&amp;IsHistoryRenewal=0&amp;batchRenewalType=0&amp;IsCoverSalesman=0&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    captcha = &apos;http://bao.91bihu.com/Account/CreateCaptcha&apos;</span><br><span class="line">    chrome = USER_AGENTS[&apos;chrome&apos;][0]</span><br><span class="line">    superE = SuperEClient(username=CAPTCHA_PLATFORM[&apos;chaojiying&apos;][&apos;username&apos;],</span><br><span class="line">                          password=CAPTCHA_PLATFORM[&apos;chaojiying&apos;][&apos;password&apos;],</span><br><span class="line">                          soft_id=CAPTCHA_PLATFORM[&apos;chaojiying&apos;][&apos;softid&apos;][&apos;壁虎报价&apos;])</span><br><span class="line"></span><br><span class="line">    def __init__(self, org, username, password):</span><br><span class="line">        self.sess = requests.Session()</span><br><span class="line">        self.sess.headers.update(&#123;</span><br><span class="line">            &apos;User-Agent&apos;: self.chrome,</span><br><span class="line">            &apos;Content-Type&apos;: &apos;application/x-www-form-urlencoded; charset=UTF-8&apos;,</span><br><span class="line">            &apos;X-Requested-With&apos;: &apos;XMLHttpRequest&apos;</span><br><span class="line">        &#125;)</span><br><span class="line">        self.org = org</span><br><span class="line">        self.username = username</span><br><span class="line">        self.password = password</span><br><span class="line">        self.list_cache = None</span><br><span class="line"></span><br><span class="line">    @retry(exceptions=(CodeError, requests.RequestException))</span><br><span class="line">    def login(self):</span><br><span class="line">        &quot;&quot;&quot;登陆&quot;&quot;&quot;</span><br><span class="line">        creat_captcha = BytesIO(self.sess.get(self.captcha).content)</span><br><span class="line">        # 显示验证码图片</span><br><span class="line">        # im = Image.open(creat_captcha)</span><br><span class="line">        # im.show()</span><br><span class="line">        verification_code = self.superE.post_pic(creat_captcha.getvalue())</span><br><span class="line">        print(verification_code)</span><br><span class="line">        data = &#123;</span><br><span class="line">            &apos;Verificationcode&apos;: verification_code[&apos;pic_str&apos;],</span><br><span class="line">            &apos;UserName&apos;: self.username,</span><br><span class="line">            &apos;Password&apos;: self.password,</span><br><span class="line">            &apos;FromMethod&apos;: &apos;1&apos;,</span><br><span class="line">        &#125;</span><br><span class="line">        response = self.sess.post(self.api_login, data=data)</span><br><span class="line">        if &apos;code_error&apos; in response.text:</span><br><span class="line">            self.superE.report_error(verification_code[&apos;pic_id&apos;])</span><br><span class="line">            raise CodeError(&quot;验证码错误，请重试&quot;)</span><br><span class="line">        else:</span><br><span class="line">            print(&apos;登陆成功！&apos;)</span><br><span class="line"></span><br><span class="line">    @property</span><br><span class="line">    def renewal_list(self):</span><br><span class="line">        &quot;&quot;&quot;所有续保列表&quot;&quot;&quot;</span><br><span class="line">        self.sess.headers.update(&#123;&apos;Content-Type&apos;: &apos;application/json&apos;,</span><br><span class="line">                                  &apos;Referer&apos;: &apos;http://bao.91bihu.com/BatchRenewal/BatchRenewalIndex&apos;&#125;)</span><br><span class="line">        data = &#123;&quot;uploadStartTime&quot;: &quot;&quot;, &quot;uploadEndTime&quot;: &quot;&quot;, &quot;licenseNo&quot;: &quot;&quot;, &quot;fileName&quot;: &quot;&quot;, &quot;TaskStatus&quot;: -1,</span><br><span class="line">                &quot;pageSize&quot;: 10, &quot;pageIndex&quot;: 1, &quot;orderBy&quot;: 1&#125;</span><br><span class="line">        response = self.sess.post(&apos;http://bao.91bihu.com/BatchRenewal/GetBatchRenewalList&apos;, json=data)</span><br><span class="line">        batch_renewal_data = json.loads(response.json().get(&apos;data&apos;)).get(&apos;batchRenewalData&apos;, [])</span><br><span class="line">        _list = []</span><br><span class="line">        # 预处理一下列表</span><br><span class="line">        for _item in batch_renewal_data:</span><br><span class="line">            _list.append([</span><br><span class="line">                _item[&apos;Id&apos;],  # &apos;Id&apos;: 105164</span><br><span class="line">                format_time(_item[&apos;CreateTime&apos;].split(&apos;(&apos;)[-1].split(&apos;-&apos;)[0]),</span><br><span class="line">                # &apos;CreateTime&apos;: &apos;/Date(1554719980000-0000)/&apos;</span><br><span class="line">                _item[&apos;SuccessfullCount&apos;],  # &apos;SuccessfullCount&apos;: 2</span><br><span class="line">                _item[&apos;TotalCount&apos;],  # &apos;TotalCount&apos;: 10</span><br><span class="line">                &apos;完成&apos; if _item[&apos;IsCompleted&apos;] == &apos;1&apos; else &apos;未完成&apos;,  # &apos;IsCompleted&apos;: 1</span><br><span class="line">                &apos;&#123;&#125;%&apos;.format(_item[&apos;Progress&apos;]),  # &apos;Progress&apos;: 100</span><br><span class="line">                _item[&apos;FileName&apos;],</span><br><span class="line">                &quot;http://bao.91bihu.com/BatchRenewal/ExportExecuteResult?BatchrenewalId=&#123;&#125;&quot;.format(_item[&apos;Id&apos;])</span><br><span class="line">            ])</span><br><span class="line">        self.list_cache = _list</span><br><span class="line">        return _list</span><br><span class="line"></span><br><span class="line">    @property</span><br><span class="line">    def today_task(self):</span><br><span class="line">        &quot;&quot;&quot;今日续保列表&quot;&quot;&quot;</span><br><span class="line">        today = format_time(time.time())</span><br><span class="line">        return self.filter_list(today)</span><br><span class="line"></span><br><span class="line">    @property</span><br><span class="line">    def unfinished(self):</span><br><span class="line">        &quot;&quot;&quot;未完成列表&quot;&quot;&quot;</span><br><span class="line">        return self.filter_list(&quot;未完成&quot;)</span><br><span class="line"></span><br><span class="line">    def filter_list(self, con):</span><br><span class="line">        &quot;&quot;&quot;筛选列表&quot;&quot;&quot;</span><br><span class="line">        _list = self.list_cache or self.renewal_list</span><br><span class="line">        return [_ for _ in _list if con in _]</span><br><span class="line"></span><br><span class="line">    def upload_file(self, file_path):</span><br><span class="line">        &quot;&quot;&quot;上传文件&quot;&quot;&quot;</span><br><span class="line">        file_name = path.split(file_path)[-1]</span><br><span class="line">        gmt_format = &apos;%a %b %d %Y %H:%M:%S GMT+0800 (China Standard Time)&apos;</span><br><span class="line">        self.sess.headers = &#123;</span><br><span class="line">            &apos;User-Agent&apos;: self.chrome,</span><br><span class="line">            &apos;Referer&apos;: &apos;http://bao.91bihu.com/BatchRenewal/BatchRenewalIndex&apos;</span><br><span class="line">        &#125;</span><br><span class="line">        with open(file_path, &apos;rb&apos;) as fp:</span><br><span class="line">            file_content = fp.read()</span><br><span class="line">        files = &#123;&apos;id&apos;: (None, &apos;WU_FILE_0&apos;),</span><br><span class="line">                 &apos;name&apos;: (None, file_name),</span><br><span class="line">                 &apos;type&apos;: (None, &apos;application/octet-stream&apos;),</span><br><span class="line">                 &apos;lastModifiedDate&apos;: (None, datetime.now().strftime(gmt_format)),</span><br><span class="line">                 &apos;size&apos;: (None, str(len(file_content))),</span><br><span class="line">                 &apos;file&apos;: (file_name, file_content, &apos;application/octet-stream&apos;)&#125;</span><br><span class="line">        response = self.sess.post(self.api_upload[self.org], files=files)</span><br><span class="line">        if &apos;上传成功&apos; in response.text:</span><br><span class="line">            return file_path</span><br><span class="line">        else:</span><br><span class="line">            raise UploadFailed(response.text)</span><br><span class="line"></span><br><span class="line">    def download_file(self, filename, save=&apos;data&apos;):</span><br><span class="line">        &quot;&quot;&quot;下载文件&quot;&quot;&quot;</span><br><span class="line">        _list = self.list_cache or self.renewal_list</span><br><span class="line">        self.sess.headers = &#123;&apos;User-Agent&apos;: self.chrome&#125;</span><br><span class="line">        for _ in _list:</span><br><span class="line">            if filename in _:</span><br><span class="line">                try:</span><br><span class="line">                    response = self.sess.get(_[-1])</span><br><span class="line">                    downloaded = unquote(response.headers[&apos;Content-Disposition&apos;].split(&quot;&apos;&quot;)[-1])</span><br><span class="line">                    with open(path.join(save, downloaded), &apos;wb&apos;) as fp:</span><br><span class="line">                        fp.write(response.content)</span><br><span class="line">                    break</span><br><span class="line">                except Exception as e:</span><br><span class="line">                    raise DownloadFailed(e)</span><br><span class="line">        else:</span><br><span class="line">            downloaded = &apos;&apos;</span><br><span class="line">        return downloaded</span><br><span class="line"></span><br><span class="line">    def logout(self):</span><br><span class="line">        &quot;&quot;&quot;登出&quot;&quot;&quot;</span><br><span class="line">        self.sess.headers = &#123;&apos;User-Agent&apos;: self.chrome&#125;</span><br><span class="line">        self.sess.get(&apos;http://bao.91bihu.com/Account/LoginOut&apos;)</span><br><span class="line">        print(&quot;登出成功&quot;)</span><br></pre></td></tr></table></figure>
+<h2 id="0x02-小技巧"><a href="#0x02-小技巧" class="headerlink" title="0x02 小技巧"></a>0x02 小技巧</h2><ul>
+<li>打印出构造的表单内容<br><code>print(requests.Request(&#39;POST&#39;, &#39;http://httpbin.org/post&#39;, files=files).prepare().body.decode(&#39;utf8&#39;))</code><h2 id="0x03-利用http-httpbin-org进行调试"><a href="#0x03-利用http-httpbin-org进行调试" class="headerlink" title="0x03 利用http://httpbin.org进行调试"></a>0x03 利用<a href="http://httpbin.org" target="_blank" rel="noopener">http://httpbin.org</a>进行调试</h2><code>httpbin.org</code> 可以然你知道你post了什么数据<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from pprint import pprint</span><br><span class="line">&gt;&gt;&gt; pprint(response.json()[&apos;headers&apos;])</span><br><span class="line">&#123;&apos;Accept&apos;: &apos;*/*&apos;,</span><br><span class="line"> &apos;Accept-Encoding&apos;: &apos;gzip, deflate&apos;,</span><br><span class="line"> &apos;Connection&apos;: &apos;close&apos;,</span><br><span class="line"> &apos;Content-Length&apos;: &apos;141&apos;,</span><br><span class="line"> &apos;Content-Type&apos;: &apos;multipart/form-data; &apos;</span><br><span class="line">                 &apos;boundary=c7cbfdd911b4e720f1dd8f479c50bc7f&apos;,</span><br><span class="line"> &apos;Host&apos;: &apos;httpbin.org&apos;,</span><br><span class="line"> &apos;User-Agent&apos;: &apos;python-requests/2.21.0&apos;&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="0x03-踩坑"><a href="#0x03-踩坑" class="headerlink" title="0x03 踩坑"></a>0x03 踩坑</h1><ul>
+<li>files 对中文名的文件支持不是特别好</li>
+<li>files 里的所有字段值只能是(str, bytes, bytearray)类型</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p>[1] <a href="http://docs.python-requests.org/zh_CN/latest/user/advanced.html#post" target="_blank" rel="noopener">Requests 文档</a><br>[2] <a href="https://stackoverflow.com/questions/12385179/how-to-send-a-multipart-form-data-with-requests-in-python" target="_blank" rel="noopener">How to send a “multipart/form-data” with requests in python?</a>  </p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Requests</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/22/Requests-POST-多个分块编码的文件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Hive-时间戳字符串转日期" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/19/Hive-时间戳字符串转日期/">Hive 时间戳字符串转日期</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/19/Hive-时间戳字符串转日期/" class="archive-article-date">
+  	<time datetime="2019-03-19T09:12:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>FROM_UNIXTIME 方法接受<code>BIGINT</code>类型的数据，输出指定日期格式的字符串。<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="keyword">YEAR</span>(FROM_UNIXTIME(<span class="keyword">CAST</span>(<span class="string">'时间戳'</span> <span class="keyword">AS</span> <span class="built_in">BIGINT</span>), <span class="string">'yyyy-MM-dd'</span>)) _YEAR</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Hive</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/03/19/Hive-时间戳字符串转日期/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-MySQL-优化思路" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/02/21/MySQL-优化思路/">MySQL 优化思路</a>
+    </h1>
+  
+
+        
+        <a href="/2019/02/21/MySQL-优化思路/" class="archive-article-date">
+  	<time datetime="2019-02-21T11:43:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="源问题"><a href="#源问题" class="headerlink" title="源问题"></a>源问题</h1><blockquote>
+<p>MySQL 对于千万级的大表要怎么优化？</p>
+</blockquote>
+<h1 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h1><ol start="0">
+<li>添加缓存</li>
+<li>优化现有数据库</li>
+<li>升级数据库类型</li>
+<li>大数据解决方案<h1 id="优化现有数据库"><a href="#优化现有数据库" class="headerlink" title="优化现有数据库"></a>优化现有数据库</h1>简言之就是使用合适的数据类型，选择合适的索引<h2 id="0x01-设计表"><a href="#0x01-设计表" class="headerlink" title="0x01 设计表"></a>0x01 设计表</h2></li>
 </ol>
-<h2 id="设计"><a href="#设计" class="headerlink" title="设计"></a>设计</h2><h3 id="递归回溯"><a href="#递归回溯" class="headerlink" title="递归回溯"></a>递归回溯</h3><p>递归回溯先确定好退出条件，然后不符合退出条件的回溯，使用if-else分支。这里八皇后的退出条件应该是这样的，最后一个皇后，要根据之前的皇后位置判断出最后一个皇后的位置然后返回位置。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">queens</span><span class="params">(num, state)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> len(state) == num - <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">for</span> pos <span class="keyword">in</span> range(num):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> conflict(state, pos):</span><br><span class="line">                <span class="keyword">yield</span> pos</span><br></pre></td></tr></table></figure></p>
-<p>需要递归的部分，递归函数就是不处于退出条件时执行的操作，将不冲突的点添加到八皇后的状态里<code>state + (pos, )</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">queens</span><span class="params">(num=<span class="number">8</span>, state=<span class="params">()</span>)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> pos <span class="keyword">in</span> range(num):</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> conflict(state, pos):</span><br><span class="line">            <span class="keyword">if</span> len(state) == num - <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">yield</span> (pos,)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">for</span> result <span class="keyword">in</span> queens(num, state + (pos,)):</span><br><span class="line">                    <span class="keyword">yield</span> (pos,) + result</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><a href="https://www.cnblogs.com/balfish/p/7905100.html" target="_blank" rel="noopener">表字段避免null值出现</a>,推荐使用有意义的值代替</li>
+<li>使用可存下数据的最小的数据类型</li>
+<li><a href="https://www.sohu.com/a/226090587_820120" target="_blank" rel="noopener">枚举类型要慎重使用</a>，过早优化乃万恶之源</li>
+<li>尽量使用TIMESTAMP而非DATETIME</li>
+<li>单表不要有太多字段，建议在20以内</li>
+<li>字符字段最好不要做主键</li>
+<li>不用外键，由程序保证约束</li>
+<li>尽量不用UNIQUE，由程序保证约束</li>
+<li>使用简单的数据类型如，int类型存储时间类型，bigint类型转ip函数</li>
+<li>用合理的字段属性长度，固定长度的表会更快</li>
+<li>尽可能使用not null定义字段</li>
+<li>尽量少用text，非用不可最好分表</li>
+</ul>
+        
+          <a class="article-more-a" href="/2019/02/21/MySQL-优化思路/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/02/21/MySQL-优化思路/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-docker-部署简单Nginx服务" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/20/docker-部署简单Nginx服务/">docker 部署简单Nginx服务</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/20/docker-部署简单Nginx服务/" class="archive-article-date">
+  	<time datetime="2018-12-20T03:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="运行容器"><a href="#运行容器" class="headerlink" title="运行容器"></a>运行容器</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">runoob@runoob:~/nginx$ docker run -p 80:80 --name nginx -v $PWD/www:/www -v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf -v $PWD/logs:/wwwlogs  -d nginx  </span><br><span class="line">45c89fab0bf9ad643bc7ab571f3ccd65379b844498f54a7c8a4e7ca1dc3a2c1e</span><br><span class="line">runoob@runoob:~/nginx$</span><br></pre></td></tr></table></figure>
+<p>命令参数：</p>
+<ul>
+<li><p><code>-p 80:80</code>：将容器的80端口映射到主机的80端口</p>
+</li>
+<li><p><code>--name nginx</code>：将容器命名为mynginx</p>
+</li>
+<li><p><code>-v $PWD/www:/www</code>：将主机中当前目录下的www挂载到容器的/www</p>
+</li>
+<li><p><code>-v $PWD/conf/nginx.conf:/etc/nginx/nginx.conf</code>：将主机中当前目录下的nginx.conf挂载到容器的/etc/nginx/nginx.conf</p>
+</li>
+<li><p><code>-v $PWD/logs:/wwwlogs</code>：将主机中当前目录下的logs挂载到容器的/wwwlogs</p>
+</li>
+</ul>
+<h1 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">user  nginx;</span><br><span class="line">worker_processes  1;</span><br><span class="line"></span><br><span class="line">error_log  /var/log/nginx/error.log warn;</span><br><span class="line">pid        /var/run/nginx.pid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">events &#123;</span><br><span class="line">    worker_connections  1024;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">http &#123;</span><br><span class="line">    include       /etc/nginx/mime.types;</span><br><span class="line">    default_type  application/octet-stream;</span><br><span class="line"></span><br><span class="line">    log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</span><br><span class="line">                      &apos;$status $body_bytes_sent &quot;$http_referer&quot; &apos;</span><br><span class="line">                      &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;&apos;;</span><br><span class="line">    # 日志目录</span><br><span class="line">    access_log  /wwwlogs/access.log  main;</span><br><span class="line">    error_log  /wwwlogs/error.log  error;</span><br><span class="line"></span><br><span class="line">    sendfile        on;</span><br><span class="line">    #tcp_nopush     on;</span><br><span class="line"></span><br><span class="line">    keepalive_timeout  65;</span><br><span class="line"></span><br><span class="line">    #gzip  on;</span><br><span class="line"></span><br><span class="line">    include /etc/nginx/conf.d/*.conf;</span><br><span class="line">    # 定义网站根目录，一定要定义server_name才有用</span><br><span class="line">    server &#123;</span><br><span class="line">        server_name 120.52.78.204;</span><br><span class="line">        location / &#123;</span><br><span class="line">            root /tmp/www;</span><br><span class="line">            index index.html;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>解决问题</p>
+<ul>
+<li><a href="https://blog.csdn.net/u012454773/article/details/53746411/" target="_blank" rel="noopener">日志显示时区问题</a></li>
+<li><a href="https://blog.csdn.net/xieyp040/article/details/80851109" target="_blank" rel="noopener">网站根目录设置问题</a></li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p>[1] <a href="http://www.runoob.com/docker/docker-install-nginx.html" target="_blank" rel="noopener">Docker 安装 Nginx</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/20/docker-部署简单Nginx服务/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Python-对称加密之-cryptography" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/07/Python-对称加密之-cryptography/">Python 对称加密之 cryptography</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/07/Python-对称加密之-cryptography/" class="archive-article-date">
+  	<time datetime="2018-12-07T06:43:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install cryptography</span><br></pre></td></tr></table></figure>
+<h1 id="代码演示"><a href="#代码演示" class="headerlink" title="代码演示"></a>代码演示</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">In [33]: from cryptography.fernet import Fernet</span><br><span class="line"></span><br><span class="line">In [34]: key = Fernet.generate_key()</span><br><span class="line"></span><br><span class="line">In [35]: key</span><br><span class="line">Out[35]: b&apos;qaOMUbtW4M31PDU8p0LdwTdgE22coHm00RGOFK-FSQs=&apos;</span><br><span class="line"></span><br><span class="line">In [36]: f = Fernet(key)</span><br><span class="line"></span><br><span class="line">In [37]: token = f.encrypt(b&apos;hello&apos;)</span><br><span class="line"></span><br><span class="line">In [38]: token</span><br><span class="line">Out[38]: b&apos;gAAAAABaatPu9ATeOyfnPfsBzdOAHFW2ZVJGhhLYDO-1svENY7_PgBfewohSJrqXXvTGD_GXBuf-Eln5cIBRZZA7c_f95zSsDw==&apos;</span><br><span class="line"></span><br><span class="line">In [39]: f.decrypt(token)</span><br><span class="line">Out[39]: b&apos;hello&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p>[1]<a href="https://zhuanlan.zhihu.com/p/33318361" target="_blank" rel="noopener">python对称加密之cryptography</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/07/Python-对称加密之-cryptography/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-docker-部署mysql" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/29/docker-部署mysql/">docker 部署mysql</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/29/docker-部署mysql/" class="archive-article-date">
+  	<time datetime="2018-11-29T01:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># docker 中下载 mysql</span><br><span class="line">docker pull mysql</span><br><span class="line"></span><br><span class="line">#启动</span><br><span class="line">docker run --name mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=Lzslov123! -d mysql</span><br><span class="line"></span><br><span class="line">#进入容器</span><br><span class="line">docker exec -it mysql bash</span><br><span class="line"></span><br><span class="line">#登录mysql</span><br><span class="line">mysql -u root -p</span><br><span class="line">ALTER USER &apos;root&apos;@&apos;localhost&apos; IDENTIFIED BY &apos;Lzslov123!&apos;;</span><br><span class="line"></span><br><span class="line">#添加远程登录用户</span><br><span class="line">CREATE USER &apos;liaozesong&apos;@&apos;%&apos; IDENTIFIED WITH mysql_native_password BY &apos;Lzslov123!&apos;;</span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &apos;liaozesong&apos;@&apos;%&apos;;</span><br></pre></td></tr></table></figure>
+<h1 id="设置mysql数据库编码"><a href="#设置mysql数据库编码" class="headerlink" title="设置mysql数据库编码"></a>设置mysql数据库编码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#启动设置编码</span><br><span class="line">docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p>[1] <a href="http://www.runoob.com/docker/docker-install-mysql.html" target="_blank" rel="noopener">docker 安装 mysql 8 版本</a></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/29/docker-部署mysql/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-docker-的学习与操作" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/21/docker-的学习与操作/">docker 的学习与操作</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/21/docker-的学习与操作/" class="archive-article-date">
+  	<time datetime="2018-10-21T12:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="容器管理"><a href="#容器管理" class="headerlink" title="容器管理"></a>容器管理</h1><h2 id="1-查看容器"><a href="#1-查看容器" class="headerlink" title="1. 查看容器"></a>1. 查看容器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker ps</span><br></pre></td></tr></table></figure>
+<h2 id="2-查看容器端口映射"><a href="#2-查看容器端口映射" class="headerlink" title="2.查看容器端口映射"></a>2.查看容器端口映射</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;docker port [container-id | container-nme]</span><br></pre></td></tr></table></figure>
+<h1 id="容器操作"><a href="#容器操作" class="headerlink" title="容器操作"></a>容器操作</h1><h2 id="1-容器与windows共享目录"><a href="#1-容器与windows共享目录" class="headerlink" title="1. 容器与windows共享目录"></a>1. 容器与windows共享目录</h2><p><a href="https://rominirani.com/docker-on-windows-mounting-host-directories-d96f3f056a2c" target="_blank" rel="noopener">Docker on Windows — Mounting Host Directories</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it -v F:\Share\:/data sequenceiq/hadoop-docker:latest /etc/bootstrap.sh -bash</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-删除所有容器"><a href="#2-删除所有容器" class="headerlink" title="2. 删除所有容器"></a>2. 删除所有容器</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker rm $(docker ps -a -q)</span><br></pre></td></tr></table></figure>
+<h2 id="3-docker-for-windows-端口映射失败"><a href="#3-docker-for-windows-端口映射失败" class="headerlink" title="3. docker for windows 端口映射失败"></a>3. docker for windows 端口映射失败</h2><p>设置打开docker实验特性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">settings -&gt; Daemon -&gt; EXperimental Features</span><br></pre></td></tr></table></figure></p>
+<h2 id="4-定义主机名"><a href="#4-定义主机名" class="headerlink" title="4. 定义主机名"></a>4. 定义主机名</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --name hadoop-master -P -h hadoop-master teradatalabs/cdh5-hive</span><br><span class="line"></span><br><span class="line">-d 后台运行</span><br><span class="line">-h 标记访问主机名为 hadoop-master</span><br><span class="line">-P 随机端口映射</span><br><span class="line">--name 容器名称 hadoop-master</span><br><span class="line"></span><br><span class="line">docker run --name hue -d -p 8888:8888 gethue/hue</span><br></pre></td></tr></table></figure>
+<h2 id="5-命令行进入后台运行的容器"><a href="#5-命令行进入后台运行的容器" class="headerlink" title="5. 命令行进入后台运行的容器"></a>5. 命令行进入后台运行的容器</h2><p>docker exec -it hue bash</p>
+<h2 id="6-拷贝容器内文件"><a href="#6-拷贝容器内文件" class="headerlink" title="6. 拷贝容器内文件"></a>6. 拷贝容器内文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker cp hue(container_name):/hue/desktop/conf/pseudo-distributed.ini ./pseudo-distributed.ini</span><br><span class="line"></span><br><span class="line"># 也可以拷贝到容器里</span><br></pre></td></tr></table></figure>
+<h1 id="window-powershell"><a href="#window-powershell" class="headerlink" title="window powershell"></a>window powershell</h1><h2 id="查询端口"><a href="#查询端口" class="headerlink" title="查询端口"></a>查询端口</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -ano</span><br></pre></td></tr></table></figure>
+<h2 id="查询进程"><a href="#查询进程" class="headerlink" title="查询进程"></a>查询进程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tasklist</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/21/docker-的学习与操作/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-快速排序" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/12/快速排序/">快速排序的算法</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/12/快速排序/" class="archive-article-date">
+  	<time datetime="2018-09-12T10:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="快速排序的算法"><a href="#快速排序的算法" class="headerlink" title="快速排序的算法"></a>快速排序的算法</h1><p>快速排序使用分治法（Divide and conquer）策略来把一个序列（list）分为两个子序列（sub-lists）。  </p>
+<p>实现思路：</p>
+<ol>
+<li>从数列中挑出一个元素，称为”基准”（pivot</li>
+<li>重新排序数列，所有比基准值小的元素摆放在基准前面，所有比基准值大的元素摆在基准后面（相同的数可以到任何一边）。在这个分区结束之后，该基准就处于数列的中间位置。这个称为分区（partition）操作。</li>
+<li>递归地（recursively）把小于基准值元素的子数列和大于基准值元素的子数列排序。</li>
+</ol>
+<p>递归到最底部时，数列的大小是零或一，也就是已经排序好了。这个算法一定会结束，因为在每次的迭代（iteration）中，它至少会把一个元素摆到它最后的位置去。</p>
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Sorting_quicksort_anim.gif" alt="算法原理图示"></p>
+<h1 id="算法实现的伪代码"><a href="#算法实现的伪代码" class="headerlink" title="算法实现的伪代码"></a>算法实现的伪代码</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">function quicksort(q)</span><br><span class="line">     var list less, pivotList, greater</span><br><span class="line">     if length(q) ≤ 1 &#123;</span><br><span class="line">         return q</span><br><span class="line">     &#125; else &#123;</span><br><span class="line">         select a pivot value pivot from q</span><br><span class="line">         for each x in q except the pivot element</span><br><span class="line">             if x &lt; pivot then add x to less</span><br><span class="line">             if x ≥ pivot then add x to greater</span><br><span class="line">         add pivot to pivotList</span><br><span class="line">         return concatenate(quicksort(less), pivotList, quicksort(greater))</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line"># 原地分区版本（不需要额外的空间）</span><br><span class="line">function partition(a, left, right, pivotIndex)</span><br><span class="line">     pivotValue := a[pivotIndex]</span><br><span class="line">     swap(a[pivotIndex], a[right]) // 把pivot移到結尾</span><br><span class="line">     storeIndex := left</span><br><span class="line">     for i from left to right-1</span><br><span class="line">         if a[i] &lt;＝ pivotValue</span><br><span class="line">             swap(a[storeIndex], a[i])</span><br><span class="line">             storeIndex := storeIndex + 1</span><br><span class="line">     swap(a[right], a[storeIndex]) // 把pivot移到它最後的地方</span><br><span class="line">     return storeIndex</span><br></pre></td></tr></table></figure>
+<h1 id="python实现"><a href="#python实现" class="headerlink" title="python实现"></a>python实现</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quick_sort</span><span class="params">(array, l, r)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    array: 数列</span></span><br><span class="line"><span class="string">    l    : 最左索引</span></span><br><span class="line"><span class="string">    r    : 最右索引</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="keyword">if</span> l &lt; r:</span><br><span class="line">        q = partition(array, l, r)</span><br><span class="line">        quick_sort(array, l, q - <span class="number">1</span>)</span><br><span class="line">        quick_sort(array, q + <span class="number">1</span>, r)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(array, l, r)</span>:</span></span><br><span class="line">    <span class="string">"""分区操作"""</span></span><br><span class="line">    <span class="comment"># 选取数列中最后一个元素作为基准</span></span><br><span class="line">    x = array[r]</span><br><span class="line">    i = l</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(l, r):</span><br><span class="line">        <span class="keyword">if</span> array[j] &lt;= x:</span><br><span class="line">            array[i], array[j] = array[j], array[i]</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">    array[i], array[r] = array[r], array[i]</span><br><span class="line">    <span class="keyword">return</span> i</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<ol>
+<li><a href="https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F#Python" target="_blank" rel="noopener">快速排序</a></li>
+</ol>
+</blockquote>
 
       
 
@@ -323,662 +1026,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/12/回溯与生成器的结合使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-观察模式" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/23/观察模式/">观察者模式</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/23/观察模式/" class="archive-article-date">
-  	<time datetime="2017-08-23T14:28:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="面向过程的思路"><a href="#面向过程的思路" class="headerlink" title="面向过程的思路"></a>面向过程的思路</h1><p>创建被观察者对象和观察者对象，创建一个后台线程一直处于运行状态，一旦发现被观察者活动就触发观察者事件。这是真实世界的面向过程思维，功能可以实现，但是效率低下。后台的死循环监听线程会导致cpu飙升，另外不利于添加监听事件，不利于添加新的观察者。<br>在面向对象编程中使用类聚集的方式主动通知，实现观察者和被观察者的关系。将观察者聚类到被观察的类之中，让被观察者在状态变化后可以通知所有的观察者。</p>
-<h1 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h1><h2 id="观察者模式的定义"><a href="#观察者模式的定义" class="headerlink" title="观察者模式的定义"></a>观察者模式的定义</h2><p>观察者模式(Observer Pattern)，也叫订阅发布模式(Publish/Subscribe)。定义对象间一种一对多的依赖关系，使得每当一个对象改变状态，则所有依赖于它的对象都会得到通知并自动更新。<br>
-        
-          <a class="article-more-a" href="/2017/08/23/观察模式/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/23/观察模式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Chrome-headless" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/02/Chrome-headless/">Chrome headless</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/02/Chrome-headless/" class="archive-article-date">
-  	<time datetime="2017-08-02T06:32:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="关于Chrome-headless"><a href="#关于Chrome-headless" class="headerlink" title="关于Chrome headless"></a>关于Chrome headless</h2><p>前几天我注意到Chrome发布了一个新特性-headless。Chrome headless跟普通的chrome浏览器一样，只不过没有浏览器界面，那么机器“浏览”网页就显得更加的自然，可以直接在Linux系统上使用chrome 的 headless 版本进行自动化测试。</p>
-<h2 id="下载webdriver"><a href="#下载webdriver" class="headerlink" title="下载webdriver"></a>下载webdriver</h2><ul>
-<li><p><a href="https://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">chromedriver</a></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span> 可以使用一下代码快速获取最新的chromedriver</span><br><span class="line"><span class="meta">#</span> platform options: linux32, linux64, mac64, win32</span><br><span class="line">PLATFORM=linux64</span><br><span class="line">VERSION=$(curl http://chromedriver.storage.googleapis.com/LATEST_RELEASE)</span><br><span class="line">curl http://chromedriver.storage.googleapis.com/$VERSION/chromedriver_$PLATFORM.zip | bsdtar -xvf - -C env/bin/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="noopener">geckodriver - firefox</a></p>
-</li>
-<li><a href="http://selenium-release.storage.googleapis.com/index.html" target="_blank" rel="noopener">iedriver</a></li>
-</ul>
-        
-          <a class="article-more-a" href="/2017/08/02/Chrome-headless/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/02/Chrome-headless/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-将python脚本打包为exe程序" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/26/将python脚本打包为exe程序/">将python脚本打包为exe程序</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/26/将python脚本打包为exe程序/" class="archive-article-date">
-  	<time datetime="2017-06-26T06:12:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="pyinstall-vs-py2exe"><a href="#pyinstall-vs-py2exe" class="headerlink" title="pyinstall vs py2exe"></a>pyinstall vs py2exe</h1><p>pyinstall 可以打包成一个文件，无控制台界面，接收命令行参数。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
-<ul>
-<li><a href="https://pyinstaller.readthedocs.io/en/stable/usage.html" target="_blank" rel="noopener">pyinstall在线文档</a></li>
-<li><a href="http://www.cnblogs.com/dacainiao/p/5918845.html" target="_blank" rel="noopener">使用PyInstaller打包Python程序</a></li>
-</ul>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/26/将python脚本打包为exe程序/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用tesseract-ocr完成简单验证码识别" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/06/使用tesseract-ocr完成简单验证码识别/">使用tesseract-ocr完成简单验证码识别</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/06/使用tesseract-ocr完成简单验证码识别/" class="archive-article-date">
-  	<time datetime="2017-06-06T11:32:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="tesseract-ocr"><a href="#tesseract-ocr" class="headerlink" title="tesseract-ocr"></a>tesseract-ocr</h1><p>记录分别在Windows平台和Linux平台上安装和执行Demo过程遇到的问题接解决方案</p>
-<h1 id="GitHub-项目地址"><a href="#GitHub-项目地址" class="headerlink" title="GitHub 项目地址"></a>GitHub 项目地址</h1><p><a href="https://github.com/tesseract-ocr/tesseract" target="_blank" rel="noopener">Tesseract Open Source OCR Engine (main repository)</a></p>
-        
-          <a class="article-more-a" href="/2017/06/06/使用tesseract-ocr完成简单验证码识别/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Tesseract-OCR</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/06/使用tesseract-ocr完成简单验证码识别/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-RabbitMQ-的学习与使用" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/06/RabbitMQ-的学习与使用/">RabbitMQ 的学习与使用</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/06/RabbitMQ-的学习与使用/" class="archive-article-date">
-  	<time datetime="2017-06-06T11:32:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h1><ol>
-<li>what does the RabbitMQ do?</li>
-<li>what is pika?</li>
-<li>how to use RabbitMQ?</li>
-</ol>
-<h1 id="What-dose-the-RabbitMQ-do"><a href="#What-dose-the-RabbitMQ-do" class="headerlink" title="What dose the RabbitMQ do?"></a>What dose the RabbitMQ do?</h1><p>RabbitMQ is a message broker: it accepts and forwards messages. You can think about it as a post office: when you put the mail that you want posting in a post box, you can be sure that Mr. Postman will eventually deliver the mail to your recipient. In this analogy, RabbitMQ is a post box, a post office and a postman.<br>RabbitMQ, and messaging in general, uses some jargon:  </p>
-<ul>
-<li>Producing means nothing more than sending. A program that sends messages is a producer</li>
-<li>A queue is the name for a post box which lives inside RabbitMQ. Although messages flow through RabbitMQ and your applications, they can only be stored inside a queue. A queue is only bound by the host’s memory &amp; disk limits, it’s essentially a large message buffer. Many producers can send messages that go to one queue, and many consumers can try to receive data from one queue. This is how we represent a queue</li>
-<li>Consuming has a similar meaning to receiving. A consumer is a program that mostly waits to receive messages
-        
-          <a class="article-more-a" href="/2017/06/06/RabbitMQ-的学习与使用/#more">more >></a>
-        
-      
-
-      
-    </li></ul></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">分布式</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">RabbitMQ</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/06/RabbitMQ-的学习与使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-部署Redis" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/23/部署Redis/">部署Redis</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/23/部署Redis/" class="archive-article-date">
-  	<time datetime="2017-05-23T11:37:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="获取redis源码"><a href="#获取redis源码" class="headerlink" title="获取redis源码"></a>获取redis源码</h1><p><code>wget http://download.redis.io/releases/redis-3.2.9.tar.gz</code><br><code>tar -xzvf redis-3.2.9.tar.gz</code></p>
-<h1 id="编译redis源码"><a href="#编译redis源码" class="headerlink" title="编译redis源码"></a>编译redis源码</h1><p><code>make</code>通过之后， 执行<code>make test</code>测试是否正确安装</p>
-<h1 id="复制可执行文件到-PATH环境目录"><a href="#复制可执行文件到-PATH环境目录" class="headerlink" title="复制可执行文件到$PATH环境目录"></a>复制可执行文件到$PATH环境目录</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$　cp redis-server /usr/local/bin/</span><br><span class="line">$　cp redis-cli /usr/local/bin/</span><br></pre></td></tr></table></figure>
-<h1 id="启动redis"><a href="#启动redis" class="headerlink" title="启动redis"></a>启动redis</h1><p><code>$ redis-server</code></p>
-<h1 id="启动客户端"><a href="#启动客户端" class="headerlink" title="启动客户端"></a>启动客户端</h1><p><code>$ redis -cli</code></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/23/部署Redis/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用bson解析ObjectId" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/22/使用bson解析ObjectId/">利用ObjectId遍历Collection</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/22/使用bson解析ObjectId/" class="archive-article-date">
-  	<time datetime="2017-05-22T02:12:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="使用bson解析ObjectId"><a href="#使用bson解析ObjectId" class="headerlink" title="使用bson解析ObjectId"></a>使用bson解析ObjectId</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bson.objectid <span class="keyword">import</span> ObjectId</span><br></pre></td></tr></table></figure>
-<h1 id="超时导致游标失效"><a href="#超时导致游标失效" class="headerlink" title="超时导致游标失效"></a>超时导致游标失效</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">res = mongo.find(&#123;&#125;)</span><br><span class="line">task_list = []</span><br><span class="line">max_threads = <span class="number">8</span></span><br><span class="line"><span class="keyword">for</span> info <span class="keyword">in</span> res:</span><br><span class="line">    t = threading.Thread(target=job, args=(info,), name=<span class="string">"thread_&#123;0&#125;"</span>.format(len(task_list)))</span><br><span class="line">    t.start()</span><br><span class="line">    task_list.append(t)</span><br><span class="line">    <span class="keyword">if</span> len(task_list) &gt; max_threads:</span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> task_list:</span><br><span class="line">            t.join()</span><br><span class="line">        task_list = []</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> task_list:</span><br><span class="line">    t.join()</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/05/22/使用bson解析ObjectId/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">MongoDB</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/22/使用bson解析ObjectId/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用Xpath的示例" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/03/使用Xpath的示例/">使用Xpath的示例</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/03/使用Xpath的示例/" class="archive-article-date">
-  	<time datetime="2017-05-03T12:53:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Xpath作为HTML页面的解析工具使用，不仅速度快而且灵活、定位准确。并且Scrapy中就内置了Xpath的Selector，下面记录一下常用的Xpath的一些定位的示例代码。</p>
-<h2 id="多类名标签使用contains"><a href="#多类名标签使用contains" class="headerlink" title="多类名标签使用contains"></a>多类名标签使用contains</h2><p>对于多类名标签使用<code>contains</code>代替直接使用<code>@class=&quot;&quot;</code><br>使用xpath表示 <code>html = &quot;&quot;&quot;&lt;div class=&quot;handsome clever&quot;&gt;Vincent Chan &lt;h1&gt;good!!!&lt;/h1&gt;&lt;/div&gt;&quot;&quot;&quot;</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tree.xpath(<span class="string">'//div[contains(@class, "handsome")]'</span>)</span><br></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2017/05/03/使用Xpath的示例/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/03/使用Xpath的示例/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/09/12/快速排序/">展开全文 >></a>
         </p>
       
 
@@ -1010,7 +1058,7 @@
   
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1022,7 +1070,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Vin
+    		&copy; 2019 Vin
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -1105,7 +1153,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Atom</a>
+                <a href="javascript:void(0)" class="js-tag color5">机器学习</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1121,7 +1169,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Atom</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">其它</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Hadoop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Hive</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Spider</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1137,19 +1209,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">其它</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color3">MongoDb</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">MongoDB</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1161,11 +1225,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+                <a href="javascript:void(0)" class="js-tag color3">阅读</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Scrapy</a>
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1173,11 +1237,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Scrapy</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Selenium</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Software</a>
+                <a href="javascript:void(0)" class="js-tag color1">Mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1185,11 +1257,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color4">Software</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1197,7 +1265,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1210,6 +1286,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Flask</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ES</a>
               </li>
              
               <li class="article-tag-list-item">
